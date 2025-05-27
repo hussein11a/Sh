@@ -1,0 +1,30 @@
+[build]
+  git clone https://github.com/hussein11a/sathty.git
+  cd sathtyنعمsathty  command = "npm ci && npm run build"
+  publish = "_site"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app fonts.googleapis.com *.google-analytics.com *.clarity.ms; img-src 'self' data: *.netlify.app *.google-analytics.com *.clarity.ms; connect-src 'self' *.netlify.app *.google-analytics.com *.clarity.ms; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app *.google-analytics.com *.clarity.ms; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.netlify.app; font-src 'self' fonts.gstatic.com data:;"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+
