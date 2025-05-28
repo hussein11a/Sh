@@ -1,0 +1,36 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  direction: rtl;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1, p {
+  margin-bottom: 0.5em;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: var(--text-color);
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #a3ffa3;
+}
