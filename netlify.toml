@@ -1,18 +1,19 @@
+# إعدادات البناء
 [build]
-  git clone https://github.com/hussein11a/sathty.git
-  cd sathtyنعمsathty  command = "npm ci && npm run build"
-  publish = "_site"
-  functions = "netlify/functions"
+  publish = "./"               # مسار ملفات الموقع (الجذر)
+  command = ""                 # لا يوجد أمر بناء (موقع ثابت)
 
 [build.environment]
   NODE_VERSION = "18"
   NODE_ENV = "production"
 
+# إعادة التوجيه لجميع الروابط إلى index.html (يدعم SPA والمواقع الثابتة)
 [[redirects]]
   from = "/*"
-  to = "/404.html"
-  status = 404
+  to = "/index.html"
+  status = 200
 
+# رؤوس حماية للموقع بالكامل
 [[headers]]
   for = "/*"
   [headers.values]
@@ -22,9 +23,8 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app fonts.googleapis.com *.google-analytics.com *.clarity.ms; img-src 'self' data: *.netlify.app *.google-analytics.com *.clarity.ms; connect-src 'self' *.netlify.app *.google-analytics.com *.clarity.ms; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app *.google-analytics.com *.clarity.ms; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.netlify.app; font-src 'self' fonts.gstatic.com data:;"
 
+# تخزين ملفات assets لأطول فترة ممكنة (تحسين الأداء)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-
