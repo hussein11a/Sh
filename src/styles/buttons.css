@@ -1,0 +1,17 @@
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-buttons a {
+  background: #00ff99;
+  color: #001f3f;
+  padding: 0.7rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+}
