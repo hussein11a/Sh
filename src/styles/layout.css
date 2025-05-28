@@ -1,13 +1,6 @@
-body {
-  margin: 0;
-  font-family: var(--font-family);
-  background: var(--main-bg);
-  color: var(--text-color);
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
