@@ -1,6 +1,9 @@
 :root {
-  --main-bg: linear-gradient(to right, #001f3f, #003366);
-  --text-color: #00ff99;
-  --header-height: 70px;
-  --font-family: 'Cairo', sans-serif;
+  --primary-color: #00ff7f;
+  --primary-dark: #0b2e4f;
+  --primary-medium: #123e7c;
+  --background-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+  --text-color: var(--primary-color);
+  --button-bg: var(--primary-color);
+  --button-hover-bg: #00cc66;
 }
