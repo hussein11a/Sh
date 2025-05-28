@@ -1,28 +1,48 @@
 backend:
   name: git-gateway
-  branch: main  # غيّر حسب الفرع الذي تستخدمه في GitHub
+  branch: main
 
-media_folder: "static/uploads"   # مكان رفع الملفات
+media_folder: "static/uploads"
 public_folder: "/uploads"
 
-site_url: "https://your-site-url.netlify.app"  # عدّل إلى رابط موقعك الفعلي
+locale: "ar"
 
 collections:
+  - name: "home"
+    label: "الصفحة الرئيسية"
+    folder: "content"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "المحتوى"
+        name: "body"
+        widget: "markdown"
+
   - name: "services"
     label: "الخدمات"
     folder: "content/services"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "عنوان الخدمة", name: "title", widget: "string" }
-      - { label: "الوصف", name: "description", widget: "text" }
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "الوصف"
+        name: "body"
+        widget: "markdown"
 
-  - name: "pages"
-    label: "الصفحات"
-    files:
-      - file: "content/home.md"
-        label: "الصفحة الرئيسية"
-        name: "home"
-        fields:
-          - { label: "عنوان الصفحة", name: "title", widget: "string" }
-          - { label: "المحتوى", name: "body", widget: "markdown" }
+  - name: "contact"
+    label: "اتصل بنا"
+    folder: "content/contact"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "الوصف"
+        name: "body"
+        widget: "markdown"
