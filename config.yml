@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "home"
+    label: "الصفحة الرئيسية"
+    files:
+      - file: "content/home.md"
+        label: "محتوى الصفحة الرئيسية"
+        name: "home"
+        fields:
+          - { label: "العنوان الرئيسي", name: "hero_title", widget: "string" }
+          - { label: "الوصف", name: "hero_subtitle", widget: "string" }
+          - { label: "زر الاتصال (نص)", name: "cta_phone_text", widget: "string" }
+          - { label: "زر الواتساب (نص)", name: "cta_whatsapp_text", widget: "string" }
+          - { label: "عرض أزرار الاتصال", name: "show_cta", widget: "boolean", default: true }
+          - { label: "صورة الخلفية (رابط)", name: "background_image", widget: "image" }
+
+  - name: "services"
+    label: "الخدمات"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "عنوان الخدمة", name: "title", widget: "string" }
+      - { label: "وصف الخدمة", name: "description", widget: "text" }
+
+  - name: "contact"
+    label: "صفحة الاتصال"
+    files:
+      - file: "content/contact.md"
+        label: "محتوى صفحة الاتصال"
+        name: "contact"
+        fields:
+          - { label: "العنوان", name: "title", widget: "string" }
+          - { label: "الوصف", name: "description", widget: "text" }
+          - { label: "رقم الهاتف", name: "phone", widget: "string" }
+          - { label: "البريد الإلكتروني", name: "email", widget: "string" }
+          - { label: "العنوان الفعلي", name: "address", widget: "string" }
