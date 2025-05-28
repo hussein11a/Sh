@@ -3,47 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="سطحة هيدروليك لخدمات نقل السيارات بأمان وسرعة داخل وخارج المدينة.">
   <title>سطحة هيدروليك</title>
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link rel="icon" href="./assets/images/logo.png" type="image/png" />
+  <meta name="description" content="خدمات سطحة هيدروليك لنقل السيارات بسرعة وأمان على مدار الساعة." />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="icon" href="/favicon.ico" />
 </head>
 <body>
-
-  <header class="site-header">
-    <h1 class="site-title">سطحة هيدروليك</h1>
-    <p class="site-subtitle">نقل سيارات داخل وخارج المدينة بخدمة عالية الجودة</p>
+  <!-- رأس الصفحة -->
+  <header>
+    <h1>سطحة هيدروليك</h1>
+    <p>نقل السيارات داخل وخارج المدينة بسرعة وأمان</p>
   </header>
 
-  <main class="services">
-    <section class="service">
-      <h2>نقل سيارات عطلانة</h2>
-      <p>نقوم بنقل السيارات المعطلة بسرعة وأمان إلى أقرب ورشة أو موقع من اختيارك.</p>
-    </section>
-
-    <section class="service">
-      <h2>نقل سيارات رياضية ومنخفضة</h2>
-      <p>نستخدم سطحه هيدروليكية مخصصة لحماية سياراتك الفاخرة أو المنخفضة.</p>
-    </section>
-
-    <section class="service">
-      <h2>خدمة 24 ساعة</h2>
-      <p>متاحون طوال اليوم، في أي وقت وأي مكان داخل المدينة أو خارجها.</p>
+  <!-- المحتوى الرئيسي -->
+  <main class="container">
+    <section class="services">
+      <div class="service-item">نقل سيارات صغيرة وكبيرة</div>
+      <div class="service-item">خدمة 24 ساعة</div>
+      <div class="service-item">أسطول مجهز بأحدث السطحات</div>
+      <div class="service-item">تغطية شاملة للمنطقة</div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2025 سطحة هيدروليك. جميع الحقوق محفوظة.</p>
-  </footer>
+  <!-- أزرار عائمة -->
+  <div class="floating-buttons">
+    <a href="tel:+966500000000">📞 اتصال</a>
+    <a href="https://wa.me/966500000000" target="_blank">💬 واتساب</a>
+  </div>
 
-  <!-- أزرار التواصل العائمة -->
-  <a href="tel:0550000000" class="floating-btn call-btn" title="اتصال">
-    📞
-  </a>
-  <a href="https://wa.me/966550000000" class="floating-btn whatsapp-btn" title="واتساب">
-    💬
-  </a>
-
-  <script src="./scripts/main.js" defer></script>
+  <!-- لوحة التحكم Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>
