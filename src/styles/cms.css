@@ -1,0 +1,13 @@
+/* تنسيقات خاصة بصفحة لوحة التحكم */
+.cms-editor-outer {
+  background: #001f3f;
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+.cms-editor-outer input,
+.cms-editor-outer textarea {
+  border-radius: 5px;
+  border: 1px solid #00ff9966;
+  padding: 0.5rem;
+}
