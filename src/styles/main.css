@@ -1,0 +1,76 @@
+/* إعدادات عامة */
+:root {
+  --main-color: #0d47a1;        /* الأزرق الداكن */
+  --accent-color: #00e676;      /* الأخضر الفاتح */
+  --text-color: #ffffff;
+  --background: #0b132b;
+  --font-family: 'Segoe UI', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.6;
+}
+
+/* العنوان الرئيسي */
+.header {
+  background: linear-gradient(135deg, #002f6c, #0d47a1);
+  color: var(--accent-color);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-color);
+}
+
+/* قسم الخدمات */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.service-card {
+  background: #112;
+  border: 1px solid var(--accent-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  background: #1a1a2e;
+  transform: scale(1.03);
+}
+
+/* الأزرار العائمة */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-buttons a {
+  background: var(--accent-color);
+  color: #000;
+  padding: 12px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+.floating-buttons a:hover {
+  background: #00c853;
+}
