@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+}
