@@ -1,7 +1,10 @@
+@import url('./reset.css');
 @import url('./variables.css');
+@import url('./base.css');
 @import url('./layout.css');
 @import url('./header.css');
-@import url('./services.css');
+@import url('./components.css');
 @import url('./buttons.css');
-@import url('./cms.css');
+@import url('./services.css');
 @import url('./responsive.css');
+@import url('./cms.css');
