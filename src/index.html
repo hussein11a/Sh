@@ -2,13 +2,14 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>سطحة هيدروليك</title>
   <meta name="description" content="خدمات سطحة هيدروليك لنقل السيارات بسرعة وأمان على مدار الساعة." />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="icon" href="/favicon.ico" />
 </head>
 <body>
+
   <!-- رأس الصفحة -->
   <header>
     <h1>سطحة هيدروليك</h1>
@@ -17,21 +18,38 @@
 
   <!-- المحتوى الرئيسي -->
   <main class="container">
-    <section class="services">
-      <div class="service-item">نقل سيارات صغيرة وكبيرة</div>
-      <div class="service-item">خدمة 24 ساعة</div>
-      <div class="service-item">أسطول مجهز بأحدث السطحات</div>
-      <div class="service-item">تغطية شاملة للمنطقة</div>
-    </section>
+    <article id="content-area">
+      <!-- محتوى Markdown سيتم تحميله هنا -->
+      جاري تحميل المحتوى...
+    </article>
   </main>
 
   <!-- أزرار عائمة -->
   <div class="floating-buttons">
-    <a href="tel:+966500000000">📞 اتصال</a>
-    <a href="https://wa.me/966500000000" target="_blank">💬 واتساب</a>
+    <a href="tel:+966500000000" aria-label="اتصال هاتفي">📞 اتصال</a>
+    <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="مراسلة واتساب">💬 واتساب</a>
   </div>
 
-  <!-- لوحة التحكم Netlify CMS -->
+  <!-- مكتبة لتحويل Markdown إلى HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    async function loadMarkdown() {
+      try {
+        const response = await fetch('/content/home.md');
+        if (!response.ok) throw new Error('فشل تحميل المحتوى');
+        const markdownText = await response.text();
+        const htmlContent = marked.parse(markdownText);
+        document.getElementById('content-area').innerHTML = htmlContent;
+      } catch (error) {
+        document.getElementById('content-area').innerHTML = '<p>حدث خطأ أثناء تحميل المحتوى.</p>';
+        console.error(error);
+      }
+    }
+    loadMarkdown();
+  </script>
+
+  <!-- لوحة تحكم Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>
