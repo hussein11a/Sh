@@ -2,14 +2,14 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>سطحة هيدروليك</title>
   <meta name="description" content="خدمات سطحة هيدروليك لنقل السيارات بسرعة وأمان على مدار الساعة." />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-
   <!-- رأس الصفحة -->
   <header>
     <h1>سطحة هيدروليك</h1>
@@ -18,35 +18,33 @@
 
   <!-- المحتوى الرئيسي -->
   <main class="container">
-    <article id="content-area">
-      <!-- محتوى Markdown سيتم تحميله هنا -->
-      جاري تحميل المحتوى...
-    </article>
+    <section class="services" id="services-list">
+      <!-- سيتم تعبئة الخدمات من محتوى Netlify CMS تلقائياً -->
+    </section>
   </main>
 
   <!-- أزرار عائمة -->
   <div class="floating-buttons">
-    <a href="tel:+966500000000" aria-label="اتصال هاتفي">📞 اتصال</a>
-    <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="مراسلة واتساب">💬 واتساب</a>
+    <a href="tel:+966500000000">📞 اتصال</a>
+    <a href="https://wa.me/966500000000" target="_blank" rel="noopener noreferrer">💬 واتساب</a>
   </div>
 
-  <!-- مكتبة لتحويل Markdown إلى HTML -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+  <!-- سكريبت لجلب المحتوى من ملفات Netlify CMS (مثال) -->
   <script>
-    async function loadMarkdown() {
-      try {
-        const response = await fetch('/content/home.md');
-        if (!response.ok) throw new Error('فشل تحميل المحتوى');
-        const markdownText = await response.text();
-        const htmlContent = marked.parse(markdownText);
-        document.getElementById('content-area').innerHTML = htmlContent;
-      } catch (error) {
-        document.getElementById('content-area').innerHTML = '<p>حدث خطأ أثناء تحميل المحتوى.</p>';
-        console.error(error);
-      }
-    }
-    loadMarkdown();
+    // مثال بسيط على عرض الخدمات (ستحتاج لاستبداله باستدعاء المحتوى الحقيقي من CMS)
+    const services = [
+      "نقل سيارات صغيرة وكبيرة",
+      "خدمة 24 ساعة",
+      "أسطول مجهز بأحدث السطحات",
+      "تغطية شاملة للمنطقة"
+    ];
+    const servicesContainer = document.getElementById('services-list');
+    services.forEach(service => {
+      const div = document.createElement('div');
+      div.className = 'service-item';
+      div.textContent = service;
+      servicesContainer.appendChild(div);
+    });
   </script>
 
   <!-- لوحة تحكم Netlify CMS -->
