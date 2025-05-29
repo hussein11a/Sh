@@ -1,10 +1,19 @@
-@import url('./reset.css');
-@import url('./variables.css');
-@import url('./base.css');
-@import url('./layout.css');
-@import url('./header.css');
-@import url('./components.css');
-@import url('./buttons.css');
-@import url('./services.css');
-@import url('./responsive.css');
-@import url('./cms.css');
+:root {
+  --primary-bg: linear-gradient(to bottom, #001F3F, #003366);
+  --accent-color: #00CC66;
+  --text-color: #ffffff;
+}
+
+body {
+  background: var(--primary-bg);
+  color: var(--text-color);
+  font-family: var(--font, Cairo, sans-serif);
+}
+
+a, button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
