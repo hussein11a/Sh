@@ -1,4 +1,7 @@
-import './ui.js';
-import './cms.js';
-
-console.log('🚀 تم تحميل سكربت main.js بنجاح');
+cms.js
+loadMetadata.js
+loadServices.js
+loadSettings.js
+loadTheme.js
+main.js
+ui.js
