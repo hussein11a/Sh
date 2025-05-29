@@ -1,5 +1,5 @@
 {
-  "primaryColor": "#0b3d91",
-  "secondaryColor": "#a8ff60",
+  "primaryColor": "linear-gradient(to bottom, #001F3F, #003366)",
+  "secondaryColor": "#00CC66",
   "font": "Cairo, sans-serif"
 }
