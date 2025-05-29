@@ -1,25 +1,15 @@
-async function loadServices() {
-  try {
-    const response = await fetch('./data/services.json');
-    if (!response.ok) throw new Error('فشل تحميل بيانات الخدمات');
-    const services = await response.json();
-
-    const servicesContainer = document.getElementById('services-container');
-    servicesContainer.innerHTML = '';
-
+fetch('./data/services.json')
+  .then(response => response.json())
+  .then(services => {
+    const container = document.getElementById('services');
     services.forEach(service => {
-      const serviceEl = document.createElement('div');
-      serviceEl.className = 'service-item';
-      serviceEl.innerHTML = `
-        <img src="./assets/icons/${service.icon}" alt="${service.title}" />
+      const item = document.createElement('div');
+      item.className = 'service-item';
+      item.innerHTML = `
+        <img src="assets/icons/${service.icon}" alt="${service.title}" />
         <h3>${service.title}</h3>
         <p>${service.description}</p>
       `;
-      servicesContainer.appendChild(serviceEl);
+      container.appendChild(item);
     });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', loadServices);
+  });
