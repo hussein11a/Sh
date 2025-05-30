@@ -1,13 +1,143 @@
-/* تنسيقات خاصة بصفحة لوحة التحكم */
-.cms-editor-outer {
-  background: #001f3f;
-  color: var(--text-color);
-  font-family: var(--font-family);
+/* cms.css - أنماط لوحة تحكم CMS */
+
+/* تخصيص واجهة Netlify CMS */
+.nc-appHeader-container {
+  background-color: var(--primary-color) !important;
 }
 
-.cms-editor-outer input,
-.cms-editor-outer textarea {
-  border-radius: 5px;
-  border: 1px solid #00ff9966;
-  padding: 0.5rem;
+.nc-appHeader-content {
+  background-color: var(--primary-color) !important;
+}
+
+.nc-appHeader-logo {
+  color: var(--light-text) !important;
+}
+
+.nc-appHeader-button {
+  color: var(--light-text) !important;
+}
+
+/* تخصيص نماذج المحتوى */
+.nc-entryEditor-container {
+  max-width: 1200px !important;
+}
+
+.nc-entryEditor-header {
+  background-color: var(--light-bg) !important;
+}
+
+.nc-entryEditor-title {
+  color: var(--primary-color) !important;
+}
+
+/* تخصيص حقول الإدخال */
+.nc-controlPane-control {
+  margin-bottom: 24px !important;
+}
+
+.nc-controlPane-label {
+  font-weight: bold !important;
+  color: var(--dark-text) !important;
+}
+
+/* تخصيص الأزرار */
+.nc-button {
+  border-radius: var(--button-radius) !important;
+  transition: all var(--transition-speed) var(--transition-timing) !important;
+}
+
+.nc-button-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--light-text) !important;
+}
+
+.nc-button-primary:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+/* تخصيص قائمة المحتوى */
+.nc-collectionPage-container {
+  max-width: 1200px !important;
+}
+
+.nc-collectionPage-header {
+  background-color: var(--light-bg) !important;
+}
+
+.nc-collectionPage-title {
+  color: var(--primary-color) !important;
+}
+
+/* تخصيص جدول المحتوى */
+.nc-entriesCollection-container {
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.nc-entriesCollection-row {
+  transition: background-color var(--transition-speed) var(--transition-timing) !important;
+}
+
+.nc-entriesCollection-row:hover {
+  background-color: var(--light-bg) !important;
+}
+
+/* تخصيص محرر المحتوى */
+.nc-markdownWidget-container {
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.nc-markdownWidget-toolbar {
+  background-color: var(--light-bg) !important;
+}
+
+.nc-markdownWidget-button {
+  color: var(--dark-text) !important;
+  transition: color var(--transition-speed) var(--transition-timing) !important;
+}
+
+.nc-markdownWidget-button:hover {
+  color: var(--accent-color) !important;
+}
+
+/* تخصيص مدير الوسائط */
+.nc-mediaLibrary-container {
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.nc-mediaLibrary-cardImage {
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.nc-mediaLibrary-cardText {
+  color: var(--dark-text) !important;
+}
+
+/* تخصيص رسائل النظام */
+.nc-toast-container {
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.nc-toast-success {
+  background-color: var(--success-color) !important;
+  color: var(--light-text) !important;
+}
+
+.nc-toast-error {
+  background-color: var(--error-color) !important;
+  color: var(--light-text) !important;
+}
+
+.nc-toast-info {
+  background-color: var(--info-color) !important;
+  color: var(--light-text) !important;
+}
+
+.nc-toast-warning {
+  background-color: var(--warning-color) !important;
+  color: var(--dark-text) !important;
 }
