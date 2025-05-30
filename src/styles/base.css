@@ -1,36 +1,49 @@
+:root {
+  /* الألوان الأساسية */
+  --primary-color: #2c3e50;
+  --secondary-color: #e74c3c;
+  --accent-color: #3498db;
+  --text-color: #333;
+  --light-text: #fff;
+  --dark-text: #222;
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+  --border-color: #dee2e6;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --error-color: #dc3545;
+  --info-color: #17a2b8;
+  
+  /* الخطوط */
+  --font-family: 'Cairo', 'Tajawal', sans-serif;
+  --heading-font: 'Cairo', 'Tajawal', sans-serif;
+  --body-font: 'Tajawal', 'Cairo', sans-serif;
+  
+  /* الحجم والمسافات */
+  --container-width: 1200px;
+  --header-height: 80px;
+  --footer-height: 300px;
+  --section-padding: 80px 0;
+  --card-padding: 20px;
+  --border-radius: 8px;
+  --button-radius: 30px;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  
+  /* الانتقالات */
+  --transition-speed: 0.3s;
+  --transition-timing: ease;
+}
+
+/* نمط الجسم */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--background-gradient);
+  font-family: var(--body-font);
   color: var(--text-color);
-  direction: rtl;
-  min-height: 100vh;
   line-height: 1.6;
+  background-color: var(--light-bg);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  direction: rtl;
 }
 
-h1, p {
-  margin-bottom: 0.5em;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 3rem;
-  color: var(--text-color);
-}
-
-header p {
-  font-size: 1.2rem;
-  color: #a3ffa3;
-}
+/* المزيد من الأنماط الأساسية... */
