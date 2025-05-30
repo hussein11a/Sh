@@ -12,5 +12,5 @@ fetch('data/contact.json')
       <p><strong>واتساب:</strong> <a href="https://wa.me/${data.whatsapp}" target="_blank">${data.whatsapp}</a></p>
       <p><strong>العنوان:</strong> ${data.address}</p>
     `;
-  })
+  } )
   .catch(error => console.error('فشل تحميل معلومات التواصل:', error));
