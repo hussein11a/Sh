@@ -1,10 +1,21 @@
-@media (max-width: 768px) {
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .service-item {
-    width: 90%;
+/* الشاشات الكبيرة (أكبر من 1200px) */
+@media (min-width: 1201px) {
+  .container {
+    max-width: 1140px;
   }
 }
+
+/* الشاشات المتوسطة (992px - 1200px) */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  /* المزيد من أنماط التجاوب... */
+}
+
+/* المزيد من قواعد التجاوب لمختلف أحجام الشاشات... */
