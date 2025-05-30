@@ -1,41 +1,409 @@
-.service-item {
-  background: rgba(0, 255, 127, 0.1);
-  border: 2px solid var(--primary-color);
-  border-radius: 10px;
-  padding: 20px;
-  width: 250px;
-  text-align: center;
-  font-weight: bold;
-  color: var(--primary-color);
-  transition: background 0.3s ease;
-}
+/* components.css - أنماط المكونات المختلفة */
 
-.service-item:hover {
-  background: rgba(0, 255, 127, 0.3);
-  cursor: default;
-}
-
-.floating-buttons {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
+/* بطاقات الخدمات */
+.service-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  margin-bottom: 30px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  z-index: 1000;
 }
 
-.floating-buttons a {
-  background-color: var(--button-bg);
-  color: var(--primary-dark);
-  font-weight: bold;
-  text-decoration: none;
-  padding: 15px 25px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 255, 127, 0.5);
+.service-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.1);
+}
+
+.service-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.service-description {
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.service-card .btn {
+  align-self: flex-start;
+}
+
+/* بطاقات المميزات */
+.feature-card {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 30px;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.feature-description {
+  color: var(--text-color);
+}
+
+/* بطاقات آراء العملاء */
+.testimonial-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  font-size: 80px;
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  color: var(--secondary-color);
+  opacity: 0.2;
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-author-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 15px;
+}
+
+.testimonial-author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-author-info h4 {
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.testimonial-author-info p {
+  margin-bottom: 0;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* شريط آراء العملاء */
+.testimonials-slider {
+  position: relative;
+  padding: 0 50px;
+}
+
+.testimonial-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.floating-buttons a:hover {
-  background-color: var(--button-hover-bg);
+.testimonial-nav:hover {
+  background-color: var(--secondary-color);
+}
+
+.testimonial-prev {
+  right: 0;
+}
+
+.testimonial-next {
+  left: 0;
+}
+
+/* نموذج الاتصال */
+.contact-form {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--body-font);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-message {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+}
+
+.form-message.success {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.form-message.error {
+  background-color: var(--error-color);
+  color: #fff;
+}
+
+.form-message.info {
+  background-color: var(--info-color);
+  color: #fff;
+}
+
+/* معلومات الاتصال */
+.contact-info {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  height: 100%;
+}
+
+.contact-info h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.contact-info h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.contact-info-icon {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-left: 15px;
+}
+
+.contact-info-content h4 {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.contact-info-content p, .contact-info-content a {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.contact-info-content a:hover {
+  color: var(--secondary-color);
+}
+
+/* زر التمرير للأعلى */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  background-color: var(--secondary-color);
+}
+
+/* شارات */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+
+.badge-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.badge-secondary {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.badge-accent {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.badge-success {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.badge-warning {
+  background-color: var(--warning-color);
+  color: var(--dark-text);
+}
+
+.badge-error {
+  background-color: var(--error-color);
+  color: #fff;
+}
+
+/* تنبيهات */
+.alert {
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.alert-primary {
+  background-color: rgba(44, 62, 80, 0.1);
+  color: var(--primary-color);
+  border-right: 4px solid var(--primary-color);
+}
+
+.alert-secondary {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--secondary-color);
+  border-right: 4px solid var(--secondary-color);
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: var(--success-color);
+  border-right: 4px solid var(--success-color);
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: var(--warning-color);
+  border-right: 4px solid var(--warning-color);
+}
+
+.alert-error {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: var(--error-color);
+  border-right: 4px solid var(--error-color);
+}
+
+.alert-close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.alert-close:hover {
+  opacity: 1;
 }
