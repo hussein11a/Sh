@@ -1,6 +1,6 @@
 // testimonials.js - تشغيل شريط الشهادات
 
-document.addEventListener('DOMContentLoaded', function( ) {
+document.addEventListener('DOMContentLoaded', function() {
   // الحصول على عناصر شريط الشهادات
   const testimonialsSlider = document.querySelector('.testimonials-slider');
   const testimonialCards = document.querySelectorAll('.testimonial-card');
