@@ -7,6 +7,7 @@
   <meta name="keywords" content="سطحة, هيدروليك, نقل سيارات, سحب سيارات, خدمة سيارات, الرياض" />
   <title>سطحة هيدروليك | خدمة نقل السيارات على مدار الساعة</title>
   <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
+  <!-- CSS Files -->
   <link rel="stylesheet" href="./styles/reset.css" />
   <link rel="stylesheet" href="./styles/base.css" />
   <link rel="stylesheet" href="./styles/layout.css" />
@@ -17,24 +18,37 @@
   <link rel="stylesheet" href="./styles/main.css" />
   <link rel="stylesheet" href="./styles/animations.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="سطحة هيدروليك | خدمة نقل السيارات على مدار الساعة" />
+  <meta property="og:description" content="سطحة هيدروليك - خدمة نقل ورفع السيارات على مدار الساعة في الرياض وجميع المناطق المجاورة" />
+  <meta property="og:image" content="./assets/icons/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="سطحة هيدروليك | خدمة نقل السيارات على مدار الساعة" />
+  <meta name="twitter:description" content="سطحة هيدروليك - خدمة نقل ورفع السيارات على مدار الساعة في الرياض وجميع المناطق المجاورة" />
+  <meta name="twitter:image" content="./assets/icons/logo.png" />
 </head>
 <body>
-  <div class="page-wrapper">
-    <header class="site-header">
+  <a href="#top" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+  <div class="page-wrapper" id="top">
+    <!-- Header -->
+    <header class="site-header" role="banner">
       <div class="header-container">
         <div class="logo-container">
-          <img src="./assets/icons/logo.png" alt="شعار سطحة هيدروليك" class="logo" />
+          <img src="./assets/icons/logo.png" alt="شعار سطحة هيدروليك" class="logo" width="80" height="80" loading="lazy" />
         </div>
         <div class="header-content">
           <h1 class="site-title">سطحة هيدروليك</h1>
           <p class="site-description">خدمة نقل ورفع السيارات على مدار الساعة</p>
         </div>
-        <nav class="main-navigation">
-          <button class="menu-toggle" aria-expanded="false">
+        <nav class="main-navigation" aria-label="القائمة الرئيسية">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
             <span class="menu-icon"></span>
             <span class="screen-reader-text">القائمة</span>
           </button>
-          <ul class="nav-menu">
+          <ul class="nav-menu" id="primary-menu">
             <li><a href="#hero">الرئيسية</a></li>
             <li><a href="#services">خدماتنا</a></li>
             <li><a href="#about">من نحن</a></li>
@@ -44,68 +58,108 @@
       </div>
     </header>
 
-    <main>
-      <!-- قسم الصفحة الرئيسية -->
-      <section id="hero" class="hero-section">
+    <!-- Main Content -->
+    <main id="main-content" tabindex="-1">
+      <!-- Hero Section -->
+      <section id="hero" class="hero-section" aria-label="الصفحة الرئيسية">
         <!-- محتوى قسم الصفحة الرئيسية -->
+        <div class="placeholder">[هنا سيتم عرض معلومات عن الخدمة وشعار جذاب]</div>
       </section>
 
-      <!-- قسم الخدمات -->
-      <section id="services" class="services-section">
+      <!-- Services Section -->
+      <section id="services" class="services-section" aria-label="خدماتنا">
         <!-- محتوى قسم الخدمات -->
+        <div class="placeholder">[هنا سيتم عرض الخدمات]</div>
       </section>
 
-      <!-- قسم المميزات -->
-      <section id="features" class="features-section">
+      <!-- Features Section -->
+      <section id="features" class="features-section" aria-label="المميزات">
         <!-- محتوى قسم المميزات -->
+        <div class="placeholder">[هنا سيتم عرض مميزات الخدمة]</div>
       </section>
 
-      <!-- قسم آراء العملاء -->
-      <section id="testimonials" class="testimonials-section">
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials-section" aria-label="آراء العملاء">
         <!-- محتوى قسم آراء العملاء -->
+        <div class="placeholder">[هنا سيتم عرض آراء العملاء]</div>
       </section>
 
-      <!-- قسم الاتصال -->
-      <section id="contact" class="contact-section">
+      <!-- About Section -->
+      <section id="about" class="about-section" aria-label="من نحن">
+        <!-- محتوى قسم من نحن -->
+        <div class="placeholder">[معلومات عن الشركة وفريق العمل]</div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section" aria-label="اتصل بنا">
         <!-- محتوى قسم الاتصال -->
+        <div class="placeholder">[نموذج الاتصال وطرق التواصل]</div>
       </section>
 
-      <!-- قسم الموقع -->
-      <section id="location" class="location-section">
+      <!-- Location Section -->
+      <section id="location" class="location-section" aria-label="الموقع">
         <!-- محتوى قسم الموقع -->
+        <div class="placeholder">[خريطة الموقع أو العنوان]</div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <!-- محتوى تذييل الصفحة -->
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-content">
+        <p>&copy; <span id="current-year"></span> سطحة هيدروليك. جميع الحقوق محفوظة.</p>
+      </div>
+      <button id="back-to-top" title="العودة للأعلى" aria-label="العودة للأعلى">
+        <i class="fa fa-chevron-up"></i>
+      </button>
     </footer>
   </div>
 
-  <!-- الأزرار العائمة -->
-  <div class="floating-buttons">
-    <!-- أزرار الاتصال والواتساب -->
+  <!-- Floating Buttons -->
+  <div class="floating-buttons" aria-label="أزرار التواصل السريعة">
+    <a href="tel:05xxxxxxxxx" class="floating-btn call-btn" title="اتصل بنا" aria-label="اتصل بنا">
+      <i class="fa fa-phone"></i>
+    </a>
+    <a href="https://wa.me/9665xxxxxxxx" class="floating-btn whatsapp-btn" title="واتساب" aria-label="تواصل عبر واتساب" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i>
+    </a>
   </div>
 
-  <!-- ملفات JavaScript -->
-  <script src="./scripts/loadTheme.js"></script>
-  <script src="./scripts/loadMetadata.js"></script>
-  <script src="./scripts/loadSettings.js"></script>
-  <script src="./scripts/loadServices.js"></script>
-  <script src="./scripts/testimonials.js"></script>
-  <script src="./scripts/contactForm.js"></script>
-  <script src="./scripts/ui.js"></script>
-<!-- سكريبت Netlify Identity للصفحة الرئيسية -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity ) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
+  <!-- JavaScript Files -->
+  <script src="./scripts/loadTheme.js" defer></script>
+  <script src="./scripts/loadMetadata.js" defer></script>
+  <script src="./scripts/loadSettings.js" defer></script>
+  <script src="./scripts/loadServices.js" defer></script>
+  <script src="./scripts/testimonials.js" defer></script>
+  <script src="./scripts/contactForm.js" defer></script>
+  <script src="./scripts/ui.js" defer></script>
+  <!-- Year update and scroll-to-top functionality -->
+  <script>
+    // تحديث السنة تلقائياً في الفوتر
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
     });
-  }
-</script>
+
+    // زر العودة للأعلى
+    const backToTopBtn = document.getElementById('back-to-top');
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+  </script>
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
