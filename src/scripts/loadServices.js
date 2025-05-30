@@ -1,3 +1,5 @@
+// loadServices.js - تحميل الخدمات من ملفات المحتوى
+
 document.addEventListener('DOMContentLoaded', function() {
   // الحصول على عنصر قائمة الخدمات
   const servicesList = document.getElementById('services-list');
@@ -16,7 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
       description: 'خدمة نقل السيارات بين المدن المختلفة بأسعار تنافسية وخدمة ممتازة.',
       image: './assets/images/service-2.jpg'
     },
-    // المزيد من الخدمات...
+    {
+      id: 'service-3',
+      title: 'سحب السيارات المعطلة',
+      description: 'سحب وإنقاذ السيارات المعطلة من الطرق والمواقف بسرعة واحترافية.',
+      image: './assets/images/service-3.jpg'
+    },
+    {
+      id: 'service-4',
+      title: 'نقل السيارات الفارهة',
+      description: 'خدمة خاصة لنقل السيارات الفارهة والرياضية مع عناية فائقة وتأمين كامل.',
+      image: './assets/images/service-4.jpg'
+    }
   ];
   
   // إنشاء بطاقات الخدمات وإضافتها للصفحة
