@@ -5,4 +5,4 @@ fetch('./data/settings.json')
     document.getElementById('site-subtitle').textContent = data.subtitle;
     document.getElementById('phone-link').href = `tel:${data.phone}`;
     document.getElementById('whatsapp-link').href = `https://wa.me/${data.whatsapp}`;
-  });
+  } );
