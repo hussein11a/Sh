@@ -1,7 +1,11 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سطحة هيدروليك</title>
+  <meta name="description" content="سطحة هيدروليك - خدمة نقل ورفع السيارات على مدار الساعة في الرياض وجميع المناطق المجاورة" />
+  <meta name="keywords" content="سطحة, هيدروليك, نقل سيارات, سحب سيارات, خدمة سيارات, الرياض" />
+  <title>سطحة هيدروليك | خدمة نقل السيارات على مدار الساعة</title>
   <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="./styles/reset.css" />
   <link rel="stylesheet" href="./styles/base.css" />
@@ -11,21 +15,84 @@
   <link rel="stylesheet" href="./styles/buttons.css" />
   <link rel="stylesheet" href="./styles/responsive.css" />
   <link rel="stylesheet" href="./styles/main.css" />
-</head><body>
-  <header class="site-header">
-    <img src="./assets/icons/logo.png" alt="شعار سطحة هيدروليك" class="logo" />
-    <h1>سطحة هيدروليك</h1>
-    <p class="description">خدمة نقل ورفع السيارات على مدار الساعة</p>
-  </header>  <main>
-    <section id="services" class="services-section">
-      <div class="container">
-        <h2>خدماتنا</h2>
-        <div id="services-list" class="services-list"></div>
+  <link rel="stylesheet" href="./styles/animations.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="./assets/icons/logo.png" alt="شعار سطحة هيدروليك" class="logo" />
+        </div>
+        <div class="header-content">
+          <h1 class="site-title">سطحة هيدروليك</h1>
+          <p class="site-description">خدمة نقل ورفع السيارات على مدار الساعة</p>
+        </div>
+        <nav class="main-navigation">
+          <button class="menu-toggle" aria-expanded="false">
+            <span class="menu-icon"></span>
+            <span class="screen-reader-text">القائمة</span>
+          </button>
+          <ul class="nav-menu">
+            <li><a href="#hero">الرئيسية</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+          </ul>
+        </nav>
       </div>
-    </section>
-  </main>  <!-- الأزرار العائمة -->  <a href="tel:0555555555" class="floating-btn call-btn" title="اتصل الآن">
-    📞
-  </a>
-  <a href="https://wa.me/966555555555" class="floating-btn whatsapp-btn" title="تواصل واتساب" target="_blank">
-    💬
-  </a>  <script src="./scripts/loadTheme.js"></script>  <script src="./scripts/loadMetadata.js"></script>  <script src="./scripts/loadSettings.js"></script>  <script src="./scripts/loadServices.js"></script>  <script src="./scripts/ui.js"></script></body></html>
+    </header>
+
+    <main>
+      <!-- قسم الصفحة الرئيسية -->
+      <section id="hero" class="hero-section">
+        <!-- محتوى قسم الصفحة الرئيسية -->
+      </section>
+
+      <!-- قسم الخدمات -->
+      <section id="services" class="services-section">
+        <!-- محتوى قسم الخدمات -->
+      </section>
+
+      <!-- قسم المميزات -->
+      <section id="features" class="features-section">
+        <!-- محتوى قسم المميزات -->
+      </section>
+
+      <!-- قسم آراء العملاء -->
+      <section id="testimonials" class="testimonials-section">
+        <!-- محتوى قسم آراء العملاء -->
+      </section>
+
+      <!-- قسم الاتصال -->
+      <section id="contact" class="contact-section">
+        <!-- محتوى قسم الاتصال -->
+      </section>
+
+      <!-- قسم الموقع -->
+      <section id="location" class="location-section">
+        <!-- محتوى قسم الموقع -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <!-- محتوى تذييل الصفحة -->
+    </footer>
+  </div>
+
+  <!-- الأزرار العائمة -->
+  <div class="floating-buttons">
+    <!-- أزرار الاتصال والواتساب -->
+  </div>
+
+  <!-- ملفات JavaScript -->
+  <script src="./scripts/loadTheme.js"></script>
+  <script src="./scripts/loadMetadata.js"></script>
+  <script src="./scripts/loadSettings.js"></script>
+  <script src="./scripts/loadServices.js"></script>
+  <script src="./scripts/testimonials.js"></script>
+  <script src="./scripts/contactForm.js"></script>
+  <script src="./scripts/ui.js"></script>
+</body>
+</html>
