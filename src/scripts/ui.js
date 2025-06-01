@@ -2,15 +2,29 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   // تفعيل زر التمرير للأعلى
+  initScrollToTopButton();
+  
+  // تفعيل تأثيرات التمرير
+  initScrollAnimations();
+  
+  // تحديث السنة الحالية في حقوق النشر
+  updateCopyrightYear();
+  
+  // تحميل معلومات الموقع
+  loadSiteInfo();
+});
+
+// دالة تفعيل زر التمرير للأعلى
+function initScrollToTopButton() {
   const scrollTopBtn = document.getElementById('scroll-top');
   
   if (scrollTopBtn) {
-    // إظهار/إخفاء زر التمرير للأعلى عند التمرير
+    // إظهار/إخفاء الزر عند التمرير
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add('visible');
+        scrollTopBtn.classList.add('active');
       } else {
-        scrollTopBtn.classList.remove('visible');
+        scrollTopBtn.classList.remove('active');
       }
     });
     
@@ -22,139 +36,103 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  
-  // تفعيل قائمة التنقل المتجاوبة
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', 
-        menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
-      );
-    });
-    
-    // إغلاق القائمة عند النقر على أي رابط فيها
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-  
-  // تفعيل التمرير السلس للروابط الداخلية
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
-  internalLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80, // تعويض ارتفاع الرأس
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-  
-  // تفعيل تأثيرات التحريك عند التمرير
-  const animateElements = document.querySelectorAll('.animate-fadeInUp, .animate-fadeIn, .animate-slideInRight, .animate-slideInLeft');
-  
-  // دالة للتحقق مما إذا كان العنصر مرئيًا في نافذة العرض
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
-      rect.bottom >= 0
-    );
-  }
-  
-  // دالة لتفعيل التأثيرات عند التمرير
-  function checkAnimations() {
-    animateElements.forEach(element => {
-      if (isElementInViewport(element) && !element.classList.contains('animated')) {
-        element.classList.add('animated');
-      }
-    });
-  }
-  
-  // تفعيل التأثيرات عند تحميل الصفحة وعند التمرير
-  window.addEventListener('scroll', checkAnimations);
-  window.addEventListener('resize', checkAnimations);
-  checkAnimations(); // تفعيل عند تحميل الصفحة
-  
-  // تحديث معلومات الاتصال من إعدادات الموقع
-  updateContactInfo();
-  
-  // تفعيل نموذج الاتصال
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // هنا يمكن إضافة كود لإرسال النموذج عبر API أو خدمة بريدية
-      
-      // عرض رسالة نجاح (مؤقتًا)
-      alert('تم إرسال طلبك بنجاح! سنتواصل معك قريبًا.');
-      
-      // إعادة تعيين النموذج
-      contactForm.reset();
-    });
-  }
-});
+}
 
-// تحديث معلومات الاتصال من الإعدادات
-function updateContactInfo() {
-  // يمكن استبدال هذه البيانات بطلب API أو بيانات من Netlify CMS
-  const contactInfo = {
+// دالة تفعيل تأثيرات التمرير
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.animate-fadeInUp, .animate-fadeIn, .animate-slideInRight, .animate-slideInLeft');
+  
+  if (animatedElements.length > 0) {
+    // دالة للتحقق من ظهور العنصر في نطاق الرؤية
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+      );
+    }
+    
+    // دالة لتفعيل التأثيرات عند التمرير
+    function handleScrollAnimations() {
+      animatedElements.forEach(element => {
+        if (isElementInViewport(element)) {
+          if (element.classList.contains('animate-fadeInUp')) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          } else if (element.classList.contains('animate-fadeIn')) {
+            element.style.opacity = '1';
+          } else if (element.classList.contains('animate-slideInRight')) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateX(0)';
+          } else if (element.classList.contains('animate-slideInLeft')) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateX(0)';
+          }
+        }
+      });
+    }
+    
+    // تفعيل التأثيرات عند تحميل الصفحة وعند التمرير
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('resize', handleScrollAnimations);
+    handleScrollAnimations();
+  }
+}
+
+// دالة تحديث السنة الحالية في حقوق النشر
+function updateCopyrightYear() {
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
+}
+
+// دالة تحميل معلومات الموقع
+function loadSiteInfo() {
+  // في بيئة الإنتاج، سيتم تحميل المعلومات من Netlify CMS
+  // هنا نستخدم بيانات ثابتة للعرض
+  const siteInfo = {
+    site_name: 'سطحة هيدروليك',
+    site_description: 'خدمة نقل ورفع السيارات على مدار الساعة في الرياض وجميع المناطق المجاورة',
     phone: '+966501234567',
     whatsapp: '+966501234567',
-    location: 'الرياض، المملكة العربية السعودية',
-    hours: '24 ساعة / 7 أيام'
+    call_button_text: 'اتصل الآن',
+    whatsapp_button_text: 'تواصل عبر الواتساب'
   };
   
-  // تحديث أرقام الهاتف وروابط الواتساب
-  const phoneElements = document.querySelectorAll('#contact-phone, #footer-phone');
-  const whatsappElements = document.querySelectorAll('#contact-whatsapp, #footer-whatsapp');
-  const locationElements = document.querySelectorAll('#contact-location, #footer-location');
-  const hoursElements = document.querySelectorAll('#contact-hours');
-  
-  // تحديث رقم الهاتف
-  phoneElements.forEach(element => {
-    if (element) element.textContent = contactInfo.phone;
-  });
-  
-  // تحديث رقم الواتساب
-  whatsappElements.forEach(element => {
-    if (element) element.textContent = contactInfo.whatsapp;
-  });
-  
-  // تحديث الموقع
-  locationElements.forEach(element => {
-    if (element) element.textContent = contactInfo.location;
-  });
-  
-  // تحديث ساعات العمل
-  hoursElements.forEach(element => {
-    if (element) element.textContent = contactInfo.hours;
-  });
-  
-  // تحديث روابط الاتصال
-  const callBtn = document.getElementById('call-btn');
-  const whatsappBtn = document.getElementById('whatsapp-btn');
-  
-  if (callBtn) {
-    callBtn.href = `tel:${contactInfo.phone.replace(/\s+/g, '')}`;
+  // تحديث عناصر معلومات الموقع
+  updateSiteElements(siteInfo);
+}
+
+// دالة تحديث عناصر معلومات الموقع
+function updateSiteElements(siteInfo) {
+  // تحديث عنوان الموقع
+  const siteTitleElement = document.getElementById('site-title');
+  if (siteTitleElement) {
+    siteTitleElement.textContent = siteInfo.site_name;
   }
   
-  if (whatsappBtn) {
-    const whatsappNumber = contactInfo.whatsapp.replace(/\+/g, '').replace(/\s+/g, '');
-    whatsappBtn.href = `https://wa.me/${whatsappNumber}`;
+  // تحديث وصف الموقع
+  const siteSubtitleElement = document.getElementById('site-subtitle');
+  if (siteSubtitleElement) {
+    siteSubtitleElement.textContent = siteInfo.site_description;
   }
+  
+  // تحديث نص أزرار الاتصال
+  const callButtonTextElements = document.querySelectorAll('#call-button-text, #hero-call-button-text');
+  callButtonTextElements.forEach(element => {
+    if (element) {
+      element.textContent = siteInfo.call_button_text;
+    }
+  });
+  
+  // تحديث نص أزرار الواتساب
+  const whatsappButtonTextElements = document.querySelectorAll('#whatsapp-button-text, #hero-whatsapp-button-text');
+  whatsappButtonTextElements.forEach(element => {
+    if (element) {
+      element.textContent = siteInfo.whatsapp_button_text;
+    }
+  });
+  
+  // تحديث عنوان الصفحة
+  document.title = `${siteInfo.site_name} | ${siteInfo.site_description}`;
 }
