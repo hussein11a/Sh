@@ -1,13 +1,21 @@
 /* responsive.css - تجاوب الموقع مع مختلف أحجام الشاشات */
 
-/* الأجهزة الكبيرة (أجهزة الكمبيوتر المكتبية، 1200px وما فوق) */
+/* تجاوب الشاشات الكبيرة */
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
   }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
 }
 
-/* الأجهزة المتوسطة (أجهزة الكمبيوتر المحمولة، 992px وما فوق) */
+/* تجاوب الشاشات المتوسطة */
 @media (min-width: 992px) and (max-width: 1199px) {
   .container {
     max-width: 960px;
@@ -18,11 +26,15 @@
   }
   
   .hero-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* الأجهزة الصغيرة (الأجهزة اللوحية، 768px وما فوق) */
+/* تجاوب الأجهزة اللوحية */
 @media (min-width: 768px) and (max-width: 991px) {
   .container {
     max-width: 720px;
@@ -33,89 +45,23 @@
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .services-grid,
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* الأجهزة الصغيرة جدًا (الهواتف المحمولة، 576px وما فوق) */
-@media (min-width: 576px) and (max-width: 767px) {
-  .container {
-    max-width: 540px;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .hero-subtitle {
     font-size: 1.1rem;
   }
   
-  .services-grid,
-  .features-grid,
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .contact-grid {
-    grid-template-columns: 1fr;
+  h1 {
+    font-size: 2.2rem;
   }
   
-  .section-title h2 {
+  h2 {
     font-size: 1.8rem;
-  }
-  
-  .service-title,
-  .feature-title {
-    font-size: 1.3rem;
-  }
-}
-
-/* الأجهزة الصغيرة جدًا (الهواتف المحمولة الصغيرة، أقل من 576px) */
-@media (max-width: 575px) {
-  .container {
-    width: 100%;
-    padding: 0 15px;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-  
-  .services-grid,
-  .features-grid,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-title h2 {
-    font-size: 1.5rem;
-  }
-  
-  .service-title,
-  .feature-title {
-    font-size: 1.3rem;
   }
   
   h3 {
@@ -123,8 +69,12 @@
   }
 }
 
-/* تجاوب الرأس */
+/* تجاوب الهواتف */
 @media (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  
   .site-header {
     padding: 15px 0;
   }
@@ -148,6 +98,63 @@
   
   .site-description {
     font-size: 0.9rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* تجاوب الهواتف الصغيرة */
+@media (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .service-title {
+    font-size: 1.2rem;
   }
 }
 
