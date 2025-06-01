@@ -1,6 +1,6 @@
 /* layout.css - تنسيق التخطيط العام للموقع */
 
-/* هيكل الصفحة */
+/* تخطيط الصفحة الرئيسي */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -8,56 +8,61 @@
 }
 
 main {
-  flex-grow: 1;
-  padding-top: var(--header-height);
+  flex: 1;
 }
 
-/* قسم الصفحة الرئيسية */
+/* قسم البطل (Hero) */
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  background-color: var(--primary-color);
-  color: #fff;
   overflow: hidden;
 }
 
 .hero-background {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
 }
 
 .hero-background img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
+  text-align: center;
+  color: var(--light-text);
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
   padding: 0 20px;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--light-text);
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 30px;
-  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
 }
 
 .hero-buttons {
@@ -68,77 +73,77 @@ main {
 
 /* قسم الخدمات */
 .services-section {
-  background-color: var(--light-bg);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-/* قسم المميزات */
-.features-section {
-  background-color: #fff;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-/* قسم آراء العملاء */
-.testimonials-section {
-  background-color: var(--light-bg);
+  padding: var(--section-padding);
 }
 
 /* قسم الاتصال */
 .contact-section {
-  background-color: #fff;
+  padding: var(--section-padding);
+  background-color: var(--light-bg);
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
+  margin-top: 40px;
 }
 
-/* قسم الموقع */
-.location-section {
-  padding: 0;
+.contact-info {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.location-map {
-  width: 100%;
-  height: 400px;
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.location-map iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
+
+.contact-text h4 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.contact-text p {
+  color: #666;
 }
 
 /* تذييل الصفحة */
 .site-footer {
-  background-color: var(--dark-bg);
-  color: #fff;
-  padding: 60px 0 30px;
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  padding: 60px 0 20px;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-bottom: 40px;
 }
 
 .footer-column h3 {
-  color: #fff;
+  color: var(--light-text);
+  font-size: 1.3rem;
   margin-bottom: 20px;
   position: relative;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .footer-column h3::after {
@@ -148,100 +153,70 @@ main {
   right: 0;
   width: 50px;
   height: 3px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: var(--secondary-color);
+.footer-column p {
+  color: #ccc;
+  line-height: 1.6;
 }
 
 .footer-contact-item {
   display: flex;
-  align-items: flex-start;
   margin-bottom: 15px;
 }
 
 .footer-contact-icon {
-  color: var(--secondary-color);
-  margin-left: 15px;
-  font-size: 1.2rem;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-left: 10px;
 }
 
-.footer-contact-text {
-  color: rgba(255, 255, 255, 0.8);
+.footer-contact-text p {
+  color: #ccc;
 }
 
 .footer-contact-text a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #ccc;
   transition: color 0.3s ease;
 }
 
 .footer-contact-text a:hover {
-  color: var(--secondary-color);
-}
-
-.footer-social {
-  display: flex;
-  gap: 15px;
-}
-
-.footer-social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.footer-social a:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-5px);
+  color: var(--primary-color);
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  text-align: center;
 }
 
 .footer-copyright {
-  color: rgba(255, 255, 255, 0.6);
+  color: #ccc;
   font-size: 0.9rem;
 }
 
-/* تخطيط الشبكة المتجاوبة */
+/* تجاوب التخطيط */
 @media (max-width: 991px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 767px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .hero-buttons {
@@ -249,8 +224,28 @@ main {
     gap: 15px;
   }
   
-  .services-grid,
-  .features-grid {
+  .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* تجاوب الأجهزة اللوحية في الوضع الأفقي */
+@media (min-width: 992px) and (max-width: 1200px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 70vh;
+  }
+}
+
+/* تجاوب الهواتف في الوضع الأفقي */
+@media (max-width: 991px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding: 50px 0;
   }
 }
