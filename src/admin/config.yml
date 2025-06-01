@@ -2,35 +2,52 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "static/uploads"
-public_folder: "/uploads"
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
 
-locale: "ar"
+locale: 'ar'
+slug:
+  encoding: "ascii"
+  clean_accents: true
 
 collections:
-  - name: "home"
-    label: "الصفحة الرئيسية"
-    folder: "content"
-    create: false
+  - name: "site_info"
+    label: "معلومات الموقع"
+    files:
+      - name: "info"
+        label: "معلومات الموقع"
+        file: "content/site_info.md"
+        fields:
+          - { label: "اسم الموقع", name: "site_name", widget: "string" }
+          - { label: "وصف الموقع", name: "site_description", widget: "string" }
+          - { label: "رقم الهاتف", name: "phone", widget: "string" }
+          - { label: "رقم الواتساب", name: "whatsapp", widget: "string" }
+          - { label: "شعار الموقع", name: "logo", widget: "image" }
+          - { label: "صورة الخلفية", name: "background_image", widget: "image" }
+          - { label: "نص زر الاتصال", name: "call_button_text", widget: "string" }
+          - { label: "نص زر الواتساب", name: "whatsapp_button_text", widget: "string" }
+
+  - name: "services"
+    label: "الخدمات"
+    folder: "content/services"
+    create: true
     slug: "{{slug}}"
     fields:
-      - label: "العنوان"
-        name: "title"
-        widget: "string"
-      - label: "العنوان الفرعي"
-        name: "subtitle"
-        widget: "string"
-      - label: "نص زر الاتصال"
-        name: "cta_phone_text"
-        widget: "string"
-      - label: "نص زر الواتساب"
-        name: "cta_whatsapp_text"
-        widget: "string"
-      - label: "صورة الخلفية"
-        name: "background_image"
-        widget: "image"
-      - label: "المحتوى"
-        name: "body"
-        widget: "markdown"
+      - { label: "عنوان الخدمة", name: "title", widget: "string" }
+      - { label: "وصف مختصر", name: "description", widget: "text" }
+      - { label: "صورة الخدمة", name: "image", widget: "image" }
+      - { label: "الترتيب", name: "order", widget: "number", value_type: "int" }
+      - { label: "المحتوى", name: "body", widget: "markdown" }
 
-  # المزيد من مجموعات المحتوى...
+  - name: "contact"
+    label: "معلومات الاتصال"
+    files:
+      - name: "contact_info"
+        label: "معلومات الاتصال"
+        file: "content/contact.md"
+        fields:
+          - { label: "العنوان", name: "title", widget: "string" }
+          - { label: "رقم الهاتف", name: "phone", widget: "string" }
+          - { label: "رقم الواتساب", name: "whatsapp", widget: "string" }
+          - { label: "العنوان", name: "address", widget: "string" }
+          - { label: "ساعات العمل", name: "working_hours", widget: "string" }
