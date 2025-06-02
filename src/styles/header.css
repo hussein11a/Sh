@@ -7,6 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  margin-bottom: 0; /* تم التأكد من إزالة أي فراغ زائد */
 }
 
 .header-container {
@@ -15,19 +16,20 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-bottom: 0; /* إزالة أي مسافة إضافية */
 }
 
 .logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* تقليل الهامش لتقليل الفجوة */
 }
 
 .logo {
   width: 80px;
   height: 80px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .logo img {
@@ -50,7 +52,7 @@
 .site-description {
   font-size: 1rem;
   color: #666;
-  margin-bottom: 5px;
+  margin-bottom: 0; /* إزالة المسافة الزائدة */
 }
 
 .header-content {
@@ -62,11 +64,7 @@
 .header-buttons {
   display: flex;
   gap: 15px;
-}
-
-.header-button {
-  padding: 10px 20px;
-  font-size: 0.9rem;
+  margin-top: 10px;
 }
 
 /* تجاوب الرأس */
@@ -111,6 +109,6 @@
   }
 
   .logo-container {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 }
