@@ -1,9 +1,30 @@
 :root {
+  /* الألوان الأساسية */
   --primary-color: #00ff7f;
   --primary-dark: #0b2e4f;
   --primary-medium: #123e7c;
+
+  /* خلفيات وتدرجات */
   --background-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
-  --text-color: var(--primary-color);
   --button-bg: var(--primary-color);
   --button-hover-bg: #00cc66;
+
+  /* ألوان النص */
+  --text-color: var(--primary-color);
+  --text-dark: #333;
+  --text-light: #fff;
+
+  /* هوامش وأبعاد افتراضية */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 30px;
+
+  /* حجم الخط */
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 2rem;
+
+  /* ظل العناصر */
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
