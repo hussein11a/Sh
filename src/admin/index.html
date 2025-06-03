@@ -6,30 +6,31 @@
   <title>لوحة تحكم المحتوى</title>
   <!-- إضافة سكريبت Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- إضافة أنماط مخصصة للمعاينة -->
   <style>
-    /* تخصيص واجهة لوحة التحكم */
+    /* أنماط مخصصة للمعاينة في Netlify CMS */
+    .frame-content {
+      direction: rtl !important;
+      font-family: 'Cairo', 'Tajawal', sans-serif !important;
+    }
+    
+    /* تحسين عرض المعاينة */
+    .frame-content img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* تحسين عرض الخطوط في المعاينة */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap');
+    
+    /* تحسين عرض الألوان في المعاينة */
     :root {
-      --primary-color: #e74c3c;
-      --secondary-color: #2c3e50;
-    }
-    
-    /* تعديل اتجاه النص للغة العربية */
-    [data-slate-editor="true"] {
-      direction: rtl;
-      text-align: right;
-    }
-    
-    /* تعديل لون الأزرار */
-    .css-1hvrgvd-CollectionTopContainer {
-      background-color: var(--secondary-color );
-    }
-    
-    .css-v758ki-Button, .css-1hpjyse-Button {
-      background-color: var(--primary-color);
-    }
-    
-    .css-v758ki-Button:hover, .css-1hpjyse-Button:hover {
-      background-color: #c0392b;
+      --primary-color: #0056b3;
+      --secondary-color: #004494;
+      --accent-color: #00a8e8;
+      --dark-text: #333333;
+      --light-text: #ffffff;
+      --light-bg: #f8f9fa;
     }
   </style>
 </head>
@@ -37,18 +38,67 @@
   <!-- لوحة تحكم Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script>
-    // تفعيل المصادقة عند تحميل الصفحة
-    if (window.netlifyIdentity ) {
+    // إعدادات إضافية لـ Netlify CMS
+    if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
-          // إظهار نافذة تسجيل الدخول إذا لم يكن المستخدم مسجل الدخول
           window.netlifyIdentity.on("login", () => {
             document.location.href = "/admin/";
           });
         }
       });
     }
+    
+    // تخصيص المعاينة
+    CMS.registerPreviewStyle("/styles/main.css");
+    CMS.registerPreviewStyle("/styles/base.css");
+    CMS.registerPreviewStyle("/styles/layout.css");
+    CMS.registerPreviewStyle("/styles/header.css");
+    CMS.registerPreviewStyle("/styles/services.css");
+    CMS.registerPreviewStyle("/styles/buttons.css");
+    CMS.registerPreviewStyle("/styles/responsive.css");
+    
+    // تخصيص معاينة الخدمات
+    const ServicePreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const image = entry.getIn(['data', 'image']);
+        const bg = this.props.getAsset(image);
+        
+        return h('div', {className: 'service-card'},
+          h('div', {className: 'service-image'},
+            h('img', {src: bg.toString()})
+          ),
+          h('div', {className: 'service-content'},
+            h('h3', {className: 'service-title'}, entry.getIn(['data', 'title'])),
+            h('p', {className: 'service-description'}, entry.getIn(['data', 'description'])),
+            h('a', {className: 'service-cta', href: '#'}, entry.getIn(['data', 'button_text']) || 'طلب الخدمة')
+          )
+        );
+      }
+    });
+    
+    CMS.registerPreviewTemplate('services', ServicePreview);
+    
+    // تخصيص معاينة معلومات الموقع
+    const SiteInfoPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        
+        return h('div', {className: 'site-header'},
+          h('div', {className: 'container'},
+            h('div', {className: 'header-container'},
+              h('div', {className: 'site-info'},
+                h('h1', {className: 'site-title'}, entry.getIn(['data', 'site_name'])),
+                h('p', {className: 'site-description'}, entry.getIn(['data', 'site_description']))
+              )
+            )
+          )
+        );
+      }
+    });
+    
+    CMS.registerPreviewTemplate('site_info', SiteInfoPreview);
   </script>
 </body>
 </html>
- 
