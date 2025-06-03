@@ -74,6 +74,7 @@ main {
 /* قسم الخدمات */
 .services-section {
   padding: var(--section-padding);
+  margin-top: 0; /* إزالة التباعد الزائد بين رأس الصفحة وقسم الخدمات */
 }
 
 /* قسم الاتصال */
@@ -201,6 +202,45 @@ main {
 .footer-copyright {
   color: #ccc;
   font-size: 0.9rem;
+}
+
+/* الأزرار العائمة */
+.floating-buttons {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.floating-call-btn,
+.floating-whatsapp-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--light-text);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+.floating-call-btn {
+  background-color: var(--primary-color);
+}
+
+.floating-whatsapp-btn {
+  background-color: #25d366;
+}
+
+.floating-call-btn:hover,
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1);
+  color: var(--light-text);
 }
 
 /* تجاوب التخطيط */
