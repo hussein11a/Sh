@@ -1,16 +1,6 @@
-/* animations.css - تأثيرات حركية مطوّرة للموقع */
+/* animations.css - تأثيرات حركية للموقع */
 
-/* متغيرات CSS لتسهيل التعديل */
-:root {
-  --animation-duration: 0.8s;
-  --animation-ease: ease;
-  --btn-shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.2);
-  --btn-shadow-active: 0 2px 5px rgba(0, 0, 0, 0.2);
-  --service-card-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  --service-card-shadow-default: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
-
-/* تأثيرات رئيسية */
+/* تأثير ظهور العناصر عند التمرير */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -65,199 +55,134 @@
   }
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-}
-
-/* تأثيرات إضافية */
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes zoomOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-@keyframes rotateIn {
-  from {
-    opacity: 0;
-    transform: rotate(-200deg) scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-@keyframes flipInY {
-  from {
-    opacity: 0;
-    transform: perspective(400px) rotateY(90deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(400px) rotateY(0deg);
-  }
-}
-
 /* تطبيق التأثيرات على العناصر */
 .animate-fadeInUp {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .animate-fadeIn {
   opacity: 0;
-  transition: opacity 1s var(--animation-ease);
+  transition: opacity 1s ease;
 }
 
 .animate-slideInRight {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .animate-slideInLeft {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .animate-pulse {
-  animation: pulse 2s infinite ease-in-out;
+  animation: pulse 2s infinite;
 }
 
-.animate-bounce {
-  animation: bounce 2s infinite;
+/* تأثيرات التحويم */
+.hover-scale {
+  transition: transform 0.3s ease;
 }
 
-.animate-zoomIn {
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+.hover-scale:hover {
+  transform: scale(1.05);
 }
 
-.animate-zoomOut {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+.hover-shadow {
+  transition: box-shadow 0.3s ease;
 }
 
-.animate-rotateIn {
-  opacity: 0;
-  transform: rotate(-200deg) scale(0.5);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+.hover-shadow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.animate-flipInY {
-  opacity: 0;
-  transform: perspective(400px) rotateY(90deg);
-  transition: opacity var(--animation-duration) var(--animation-ease), transform var(--animation-duration) var(--animation-ease);
+.hover-lift {
+  transition: transform 0.3s ease;
 }
 
-/* تفعيل التأثيرات عند ظهور العناصر */
-.animated.animate-fadeInUp {
-  opacity: 1;
-  transform: translateY(0);
+.hover-lift:hover {
+  transform: translateY(-5px);
 }
-
-.animated.animate-fadeIn {
-  opacity: 1;
-}
-
-.animated.animate-slideInRight {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.animated.animate-slideInLeft {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.animated.animate-zoomIn {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.animated.animate-zoomOut {
-  opacity: 0;
-  transform: scale(0.5);
-}
-
-.animated.animate-rotateIn {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-.animated.animate-flipInY {
-  opacity: 1;
-  transform: perspective(400px) rotateY(0deg);
-}
-
-/* فئات للتحكم في مدة وتأخير الحركة */
-.fast { animation-duration: 0.5s !important; transition-duration: 0.5s !important; }
-.slow { animation-duration: 2s !important; transition-duration: 2s !important; }
-.delay-1s { animation-delay: 1s !important; transition-delay: 1s !important; }
-.delay-2s { animation-delay: 2s !important; transition-delay: 2s !important; }
-.delay-3s { animation-delay: 3s !important; transition-delay: 3s !important; }
 
 /* تأثيرات الأزرار */
 .btn {
-  transition: transform 0.3s var(--animation-ease), box-shadow 0.3s var(--animation-ease);
-}
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--btn-shadow-hover);
-}
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: var(--btn-shadow-active);
+  position: relative;
+  overflow: hidden;
 }
 
-/* تأثيرات بطاقات الخدمات */
-.service-card {
-  transition: transform 0.3s var(--animation-ease), box-shadow 0.3s var(--animation-ease);
-  box-shadow: var(--service-card-shadow-default);
-}
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--service-card-shadow);
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* تحسينات على التوافق مع الشاشات الصغيرة */
-@media (max-width: 600px) {
-  .service-card:hover,
-  .btn:hover {
-    transform: none;
-    box-shadow: var(--service-card-shadow-default);
+.btn:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+.btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* تأثيرات الصور */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* تأثيرات التحميل */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(100%);
+  }
+}
 
-  .animate-bounce,
-  .animate-pulse {
-    animation-duration: 1s !important;
+/* تحسين أداء الرسوم المتحركة */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
