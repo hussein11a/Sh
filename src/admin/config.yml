@@ -10,6 +10,11 @@ slug:
   encoding: "ascii"
   clean_accents: true
 
+# تحسين واجهة المستخدم في لوحة التحكم
+editor:
+  preview: true
+
+# تنظيم المجموعات حسب ترتيب الموقع
 collections:
   - name: "site_info"
     label: "معلومات الموقع"
@@ -26,6 +31,10 @@ collections:
           - { label: "صورة الخلفية", name: "background_image", widget: "image" }
           - { label: "نص زر الاتصال", name: "call_button_text", widget: "string" }
           - { label: "نص زر الواتساب", name: "whatsapp_button_text", widget: "string" }
+          - { label: "العنوان", name: "address", widget: "string" }
+          - { label: "ساعات العمل", name: "working_hours", widget: "string" }
+          - { label: "الكلمات المفتاحية (SEO)", name: "keywords", widget: "string", hint: "كلمات مفتاحية مفصولة بفواصل" }
+          - { label: "وصف الموقع (SEO)", name: "meta_description", widget: "text", hint: "وصف الموقع لمحركات البحث (150-160 حرف)" }
 
   - name: "services"
     label: "الخدمات"
@@ -36,8 +45,10 @@ collections:
       - { label: "عنوان الخدمة", name: "title", widget: "string" }
       - { label: "وصف مختصر", name: "description", widget: "text" }
       - { label: "صورة الخدمة", name: "image", widget: "image" }
-      - { label: "الترتيب", name: "order", widget: "number", value_type: "int" }
-      - { label: "المحتوى", name: "body", widget: "markdown" }
+      - { label: "ترتيب الظهور", name: "order", widget: "number", default: 1, value_type: "int", min: 1 }
+      - { label: "محتوى الخدمة", name: "body", widget: "markdown" }
+      - { label: "نص زر الخدمة", name: "button_text", widget: "string", default: "طلب الخدمة" }
+      - { label: "الكلمات المفتاحية (SEO)", name: "keywords", widget: "string", hint: "كلمات مفتاحية مفصولة بفواصل" }
 
   - name: "contact"
     label: "معلومات الاتصال"
@@ -46,8 +57,51 @@ collections:
         label: "معلومات الاتصال"
         file: "content/contact.md"
         fields:
-          - { label: "العنوان", name: "title", widget: "string" }
+          - { label: "العنوان", name: "title", widget: "string", default: "اتصل بنا" }
           - { label: "رقم الهاتف", name: "phone", widget: "string" }
           - { label: "رقم الواتساب", name: "whatsapp", widget: "string" }
           - { label: "العنوان", name: "address", widget: "string" }
           - { label: "ساعات العمل", name: "working_hours", widget: "string" }
+          - { label: "نص زر الاتصال", name: "call_button_text", widget: "string", default: "اتصل الآن" }
+          - { label: "نص زر الواتساب", name: "whatsapp_button_text", widget: "string", default: "تواصل عبر الواتساب" }
+
+  - name: "seo"
+    label: "إعدادات SEO"
+    files:
+      - name: "seo_settings"
+        label: "إعدادات SEO"
+        file: "content/seo.md"
+        fields:
+          - { label: "عنوان الموقع", name: "site_title", widget: "string" }
+          - { label: "وصف الموقع", name: "site_description", widget: "text" }
+          - { label: "الكلمات المفتاحية", name: "keywords", widget: "string" }
+          - { label: "صورة المشاركة الاجتماعية", name: "og_image", widget: "image" }
+          - { label: "اسم المؤلف", name: "author", widget: "string", default: "سطحة هيدروليك" }
+          - { label: "اللغة", name: "language", widget: "string", default: "Arabic" }
+          - { label: "الرابط القانوني", name: "canonical_url", widget: "string", default: "https://sathte.netlify.app/" }
+
+  - name: "footer"
+    label: "تذييل الصفحة"
+    files:
+      - name: "footer_content"
+        label: "محتوى تذييل الصفحة"
+        file: "content/footer.md"
+        fields:
+          - { label: "نص حقوق النشر", name: "copyright_text", widget: "string", default: "جميع الحقوق محفوظة" }
+          - { label: "نبذة عن الموقع", name: "about_text", widget: "text" }
+          - { label: "عنوان قسم الاتصال", name: "contact_title", widget: "string", default: "اتصل بنا" }
+          - { label: "عنوان قسم الروابط السريعة", name: "quick_links_title", widget: "string", default: "روابط سريعة" }
+
+  - name: "colors"
+    label: "ألوان الموقع"
+    files:
+      - name: "color_scheme"
+        label: "نظام الألوان"
+        file: "content/colors.md"
+        fields:
+          - { label: "اللون الرئيسي", name: "primary_color", widget: "color", default: "#0056b3" }
+          - { label: "اللون الثانوي", name: "secondary_color", widget: "color", default: "#004494" }
+          - { label: "لون التأكيد", name: "accent_color", widget: "color", default: "#00a8e8" }
+          - { label: "لون النص الداكن", name: "dark_text", widget: "color", default: "#333333" }
+          - { label: "لون النص الفاتح", name: "light_text", widget: "color", default: "#ffffff" }
+          - { label: "لون الخلفية الفاتحة", name: "light_bg", widget: "color", default: "#f8f9fa" }
