@@ -1,45 +1,176 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة تحكم المحتوى</title>
-  <!-- إضافة سكريبت Netlify Identity Widget -->
+  <meta name="description" content="سطحة هيدروليك - خدمة نقل ورفع السيارات على مدار الساعة في الرياض وجميع المناطق المجاورة" />
+  <meta name="keywords" content="سطحة, هيدروليك, نقل سيارات, سحب سيارات, خدمة سيارات, الرياض" />
+  <title>سطحة هيدروليك | خدمة نقل السيارات على مدار الساعة</title>
+  <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="./styles/reset.css" />
+  <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/layout.css" />
+  <link rel="stylesheet" href="./styles/header.css" />
+  <link rel="stylesheet" href="./styles/services.css" />
+  <link rel="stylesheet" href="./styles/buttons.css" />
+  <link rel="stylesheet" href="./styles/responsive.css" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/animations.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- إضافة سكريبت Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <!-- إضافة أنماط مخصصة للمعاينة -->
-  <style>
-    /* أنماط مخصصة للمعاينة في Netlify CMS */
-    .frame-content {
-      direction: rtl !important;
-      font-family: 'Cairo', 'Tajawal', sans-serif !important;
-    }
-    
-    /* تحسين عرض المعاينة */
-    .frame-content img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    /* تحسين عرض الخطوط في المعاينة */
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap');
-    
-    /* تحسين عرض الألوان في المعاينة */
-    :root {
-      --primary-color: #0056b3;
-      --secondary-color: #004494;
-      --accent-color: #00a8e8;
-      --dark-text: #333333;
-      --light-text: #ffffff;
-      --light-bg: #f8f9fa;
-    }
-  </style>
 </head>
 <body>
-  <!-- لوحة تحكم Netlify CMS -->
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="container">
+        <div class="header-container">
+          <div class="logo-container">
+            <div class="logo">
+              <img src="./assets/images/logo.png" alt="سطحة هيدروليك" />
+            </div>
+            <div class="site-info">
+              <h1 class="site-title" id="site-title">سطحة هيدروليك</h1>
+              <p class="site-description" id="site-subtitle">خدمة نقل ورفع السيارات على مدار الساعة</p>
+            </div>
+          </div>
+          <div class="header-content">
+            <div class="header-buttons">
+              <a href="tel:+966501234567" id="phone-link" class="btn btn-primary header-button">
+                <i class="fas fa-phone-alt"></i>
+                <span id="call-button-text">اتصل الآن</span>
+              </a>
+              <a href="https://wa.me/966501234567" id="whatsapp-link" target="_blank" class="btn btn-secondary header-button">
+                <i class="fab fa-whatsapp"></i>
+                <span id="whatsapp-button-text">تواصل عبر الواتساب</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- قسم الصفحة الرئيسية -->
+      <section id="hero" class="hero-section">
+        <div class="hero-background">
+          <img src="./assets/images/hero-bg.jpg" alt="سطحة هيدروليك" />
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h2 class="hero-title animate-fadeInUp">خدمة نقل السيارات على مدار الساعة</h2>
+            <p class="hero-subtitle animate-fadeInUp">نقدم خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان في الرياض وجميع المناطق المجاورة</p>
+            <div class="hero-buttons animate-fadeInUp">
+              <a href="tel:+966501234567" class="btn btn-primary">
+                <i class="fas fa-phone-alt"></i>
+                <span id="hero-call-button-text">اتصل الآن</span>
+              </a>
+              <a href="https://wa.me/966501234567" target="_blank" class="btn btn-secondary">
+                <i class="fab fa-whatsapp"></i>
+                <span id="hero-whatsapp-button-text">تواصل عبر الواتساب</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- قسم الخدمات -->
+      <section id="services" class="services-section">
+        <div class="container">
+          <div class="section-title">
+            <h2>خدماتنا</h2>
+            <div class="divider"></div>
+            <p>نقدم مجموعة متكاملة من خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان</p>
+          </div>
+          <div class="services-grid" id="services-list">
+            <!-- سيتم إضافة بطاقات الخدمات هنا عبر JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- قسم الاتصال -->
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <div class="section-title">
+            <h2>اتصل بنا</h2>
+            <div class="divider"></div>
+            <p>نحن متاحون على مدار الساعة لخدمتك، لا تتردد في التواصل معنا</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-info" id="contact-info">
+              <!-- سيتم إضافة معلومات الاتصال هنا عبر JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>عن الشركة</h3>
+            <p>نقدم خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان في الرياض وجميع المناطق المجاورة على مدار الساعة.</p>
+          </div>
+          <div class="footer-column">
+            <h3>معلومات الاتصال</h3>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="footer-contact-text">
+                <p>الهاتف: <a href="tel:+966501234567" id="footer-phone">+966501234567</a></p>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="footer-contact-text">
+                <p>واتساب: <a href="https://wa.me/966501234567" target="_blank" id="footer-whatsapp">+966501234567</a></p>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="footer-contact-text">
+                <p id="footer-location">الرياض، المملكة العربية السعودية</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>ساعات العمل</h3>
+            <p id="contact-hours">24 ساعة / 7 أيام</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">© <span id="current-year">2025</span> سطحة هيدروليك - جميع الحقوق محفوظة</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- الأزرار العائمة -->
+  <div class="floating-buttons">
+    <a href="tel:+966501234567" id="call-btn" class="floating-call-btn">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="https://wa.me/966501234567" id="whatsapp-btn" target="_blank" class="floating-whatsapp-btn">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- ملفات JavaScript -->
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/services.js"></script>
+  <script src="./scripts/ui.js"></script>
+  <script src="./scripts/cms.js"></script>
+  
+  <!-- سكريبت Netlify Identity للصفحة الرئيسية -->
   <script>
-    // إعدادات إضافية لـ Netlify CMS
-    if (window.netlifyIdentity) {
+    if (window.netlifyIdentity ) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
@@ -49,56 +180,8 @@
       });
     }
     
-    // تخصيص المعاينة
-    CMS.registerPreviewStyle("/styles/main.css");
-    CMS.registerPreviewStyle("/styles/base.css");
-    CMS.registerPreviewStyle("/styles/layout.css");
-    CMS.registerPreviewStyle("/styles/header.css");
-    CMS.registerPreviewStyle("/styles/services.css");
-    CMS.registerPreviewStyle("/styles/buttons.css");
-    CMS.registerPreviewStyle("/styles/responsive.css");
-    
-    // تخصيص معاينة الخدمات
-    const ServicePreview = createClass({
-      render: function() {
-        const entry = this.props.entry;
-        const image = entry.getIn(['data', 'image']);
-        const bg = this.props.getAsset(image);
-        
-        return h('div', {className: 'service-card'},
-          h('div', {className: 'service-image'},
-            h('img', {src: bg.toString()})
-          ),
-          h('div', {className: 'service-content'},
-            h('h3', {className: 'service-title'}, entry.getIn(['data', 'title'])),
-            h('p', {className: 'service-description'}, entry.getIn(['data', 'description'])),
-            h('a', {className: 'service-cta', href: '#'}, entry.getIn(['data', 'button_text']) || 'طلب الخدمة')
-          )
-        );
-      }
-    });
-    
-    CMS.registerPreviewTemplate('services', ServicePreview);
-    
-    // تخصيص معاينة معلومات الموقع
-    const SiteInfoPreview = createClass({
-      render: function() {
-        const entry = this.props.entry;
-        
-        return h('div', {className: 'site-header'},
-          h('div', {className: 'container'},
-            h('div', {className: 'header-container'},
-              h('div', {className: 'site-info'},
-                h('h1', {className: 'site-title'}, entry.getIn(['data', 'site_name'])),
-                h('p', {className: 'site-description'}, entry.getIn(['data', 'site_description']))
-              )
-            )
-          )
-        );
-      }
-    });
-    
-    CMS.registerPreviewTemplate('site_info', SiteInfoPreview);
+    // تحديث السنة الحالية في حقوق النشر
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
