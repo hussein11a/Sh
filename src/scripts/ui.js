@@ -1,9 +1,6 @@
 // ui.js - تفاعلات واجهة المستخدم
 
 document.addEventListener('DOMContentLoaded', function() {
-  // تفعيل زر التمرير للأعلى
-  initScrollToTopButton();
-  
   // تفعيل تأثيرات التمرير
   initScrollAnimations();
   
@@ -13,30 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // تحميل معلومات الموقع
   loadSiteInfo();
 });
-
-// دالة تفعيل زر التمرير للأعلى
-function initScrollToTopButton() {
-  const scrollTopBtn = document.getElementById('scroll-top');
-  
-  if (scrollTopBtn) {
-    // إظهار/إخفاء الزر عند التمرير
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add('active');
-      } else {
-        scrollTopBtn.classList.remove('active');
-      }
-    });
-    
-    // التمرير للأعلى عند النقر على الزر
-    scrollTopBtn.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-}
 
 // دالة تفعيل تأثيرات التمرير
 function initScrollAnimations() {
