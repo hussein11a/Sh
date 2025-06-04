@@ -1,193 +1,62 @@
 /* variables.css - متغيرات CSS للموقع */
 
 :root {
-  /* الألوان الرئيسية */
-  --primary-color: #0056b3;       /* أزرق داكن أكثر احترافية */
-  --secondary-color: #004494;     /* أزرق أغمق للتباين */
-  --accent-color: #00a8e8;        /* أزرق فاتح للتأكيد */
+  /* الألوان الأساسية */
+  --primary-color: #0056b3;
+  --primary-dark: #004494;
+  --primary-light: #3a7abd;
+  --secondary-color: #25d366;
+  --secondary-dark: #1da851;
+  --secondary-light: #4cda7f;
   
   /* ألوان النص */
-  --dark-text: #333333;           /* نص داكن للقراءة المريحة */
-  --light-text: #ffffff;          /* نص فاتح على الخلفيات الداكنة */
-  --muted-text: #6c757d;          /* نص خافت للمعلومات الثانوية */
+  --dark-text: #333333;
+  --light-text: #ffffff;
+  --muted-text: #6c757d;
   
   /* ألوان الخلفية */
-  --light-bg: #f8f9fa;            /* خلفية فاتحة للأقسام */
-  --dark-bg: #343a40;             /* خلفية داكنة للأقسام */
-  --white-bg: #ffffff;            /* خلفية بيضاء */
+  --white-bg: #ffffff;
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+  --overlay-bg: rgba(0, 0, 0, 0.6);
   
   /* الخطوط */
-  --primary-font: 'Cairo', sans-serif;      /* خط رئيسي للعناوين */
-  --secondary-font: 'Tajawal', sans-serif;  /* خط ثانوي للنصوص */
+  --primary-font: 'Cairo', sans-serif;
+  --secondary-font: 'Tajawal', sans-serif;
+  --base-font-size: 16px;
+  --heading-line-height: 1.4;
+  --body-line-height: 1.6;
   
-  /* أحجام الخط */
-  --base-font-size: 16px;         /* حجم الخط الأساسي */
-  --h1-size: 2.5rem;              /* حجم العنوان الرئيسي */
-  --h2-size: 2rem;                /* حجم العنوان الثانوي */
-  --h3-size: 1.5rem;              /* حجم العنوان الفرعي */
-  --h4-size: 1.25rem;             /* حجم العنوان الفرعي الثانوي */
-  --small-text: 0.875rem;         /* حجم النص الصغير */
+  /* المسافات */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
   
-  /* المسافات والحشوات */
-  --section-padding: 80px 0;      /* حشوة الأقسام */
-  --container-padding: 0 15px;    /* حشوة الحاويات */
-  --element-spacing: 20px;        /* تباعد العناصر */
-  
-  /* الحدود والزوايا */
-  --border-radius: 8px;           /* نصف قطر الزوايا */
-  --border-width: 1px;            /* عرض الحدود */
-  --border-color: #dee2e6;        /* لون الحدود */
-  
-  /* الظلال */
-  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  /* ظل الصناديق */
-  --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);  /* ظل النص */
+  /* الحدود والظلال */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   
   /* التحولات */
-  --transition: all 0.3s ease;    /* تحول سلس */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
   
-  /* أبعاد الشاشة */
-  --container-width: 1140px;      /* عرض الحاوية الأقصى */
-  --mobile-width: 576px;          /* عرض الجوال */
-  --tablet-width: 768px;          /* عرض الجهاز اللوحي */
-  --desktop-width: 992px;         /* عرض سطح المكتب */
-  --large-desktop-width: 1200px;  /* عرض سطح المكتب الكبير */
+  /* تخطيط الصفحة */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+  --footer-height: 200px;
 }
 
-/* تطبيق الخطوط على العناصر الأساسية */
-body {
-  font-family: var(--secondary-font);
-  font-size: var(--base-font-size);
-  color: var(--dark-text);
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--primary-font);
-  font-weight: 700;
-  color: var(--dark-text);
-  margin-bottom: 15px;
-}
-
-h1 {
-  font-size: var(--h1-size);
-}
-
-h2 {
-  font-size: var(--h2-size);
-}
-
-h3 {
-  font-size: var(--h3-size);
-}
-
-h4 {
-  font-size: var(--h4-size);
-}
-
-p {
-  margin-bottom: 15px;
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-a:hover {
-  color: var(--secondary-color);
-}
-
-/* تحسين قراءة النص */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-muted {
-  color: var(--muted-text);
-}
-
-.text-primary {
-  color: var(--primary-color);
-}
-
-.text-secondary {
-  color: var(--secondary-color);
-}
-
-.text-white {
-  color: var(--light-text);
-}
-
-/* تحسين الحاويات */
-.container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: var(--container-padding);
-}
-
-/* تحسين الأزرار */
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  font-family: var(--primary-font);
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-}
-
-.btn-primary:hover {
-  background-color: var(--secondary-color);
-  color: var(--light-text);
-}
-
-.btn-secondary {
-  background-color: var(--secondary-color);
-  color: var(--light-text);
-}
-
-.btn-secondary:hover {
-  background-color: var(--accent-color);
-  color: var(--light-text);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.btn-outline:hover {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-}
-
-/* تحسين العناوين */
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title h2 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
-  position: relative;
-  display: inline-block;
+/* وسائط الاستعلام للأجهزة المختلفة */
+@media (max-width: 768px) {
+  :root {
+    --base-font-size: 14px;
+    --header-height: 60px;
+  }
 }
