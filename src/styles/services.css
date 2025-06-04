@@ -1,14 +1,9 @@
 /* services.css - أنماط قسم الخدمات */
 
-.services-section {
-  background-color: var(--light-bg);
-  padding: var(--spacing-xxl) 0;
-}
-
-.services-list {
+.services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-xl);
 }
 
@@ -16,20 +11,13 @@
   background-color: var(--white-bg);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  box-shadow: var(--box-shadow);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.5s ease forwards;
-  animation-delay: calc(var(--order, 0) * 0.1s);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--box-shadow-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .service-card img {
@@ -39,26 +27,26 @@
 }
 
 .service-card h3 {
-  padding: var(--spacing-md) var(--spacing-md) var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
   color: var(--primary-color);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .service-card p {
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-md) var(--spacing-md);
   color: var(--dark-text);
-  flex-grow: 1;
-  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
 }
 
 .service-btn {
-  display: inline-block;
+  display: block;
+  margin: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
   background-color: var(--primary-color);
   color: var(--light-text);
-  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-sm);
   text-align: center;
-  margin: 0 var(--spacing-md) var(--spacing-md);
+  font-weight: 600;
   transition: background-color var(--transition-fast);
 }
 
@@ -67,16 +55,9 @@
   color: var(--light-text);
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* تعديلات للأجهزة المحمولة */
 @media (max-width: 768px) {
-  .services-list {
+  .services-grid {
     grid-template-columns: 1fr;
   }
   
