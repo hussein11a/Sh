@@ -1,17 +1,35 @@
-/* animations.css - تأثيرات حركية للموقع */
+/* animations.css - أنماط الحركة والتأثيرات */
 
 /* تأثير ظهور العناصر عند التمرير */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.animate-fadeInUp {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+.animate-fadeInUp.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تأثير نبض للأزرار */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* تأثير تلاشي للصور */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -21,6 +39,25 @@
   }
 }
 
+.fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* تأثير دوران للأيقونات */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 2s linear infinite;
+}
+
+/* تأثير تحرك من اليمين */
 @keyframes slideInRight {
   from {
     transform: translateX(50px);
@@ -32,6 +69,11 @@
   }
 }
 
+.slideInRight {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* تأثير تحرك من اليسار */
 @keyframes slideInLeft {
   from {
     transform: translateX(-50px);
@@ -43,136 +85,118 @@
   }
 }
 
-@keyframes pulse {
+.slideInLeft {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+/* تأثير تكبير وتصغير */
+@keyframes scale {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
   }
 }
 
-/* تطبيق التأثيرات على العناصر */
-.animate-fadeInUp {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.scale {
+  animation: scale 2s ease-in-out infinite;
 }
 
-.animate-fadeIn {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.animate-slideInRight {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.animate-slideInLeft {
-  opacity: 0;
-  transform: translateX(-50px);
-/* animations.css - تعريف الرسوم المتحركة */
-
-/* تأثير الظهور التدريجي */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+/* تأثير وميض */
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
-  to {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
     opacity: 1;
   }
 }
 
-/* تأثير الظهور من الأسفل */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.blink {
+  animation: blink 2s linear infinite;
+}
+
+/* تأثير تحرك للأعلى */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
     transform: translateY(0);
   }
 }
 
-/* تأثير الظهور من اليمين */
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.floatUp {
+  animation: floatUp 3s ease-in-out infinite;
 }
 
-/* تأثير النبض */
-@keyframes pulse {
+/* تأثير تحرك للأسفل */
+@keyframes floatDown {
   0% {
-    transform: scale(1);
+    transform: translateY(0);
   }
   50% {
-    transform: scale(1.05);
+    transform: translateY(10px);
   }
   100% {
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
-/* تأثير الدوران */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
+.floatDown {
+  animation: floatDown 3s ease-in-out infinite;
+}
+
+/* تأثير تغيير لون */
+@keyframes colorChange {
+  0% {
+    color: var(--primary-color);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    color: var(--accent-color);
+  }
+  100% {
+    color: var(--primary-color);
   }
 }
 
-/* تطبيق الرسوم المتحركة */
-.animate-fadeIn {
-  animation: fadeIn 1s ease forwards;
+.colorChange {
+  animation: colorChange 3s ease-in-out infinite;
 }
 
-.animate-fadeInUp {
-  animation: fadeInUp 1s ease forwards;
+/* تأثير ظل متحرك */
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 86, 179, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 86, 179, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 86, 179, 0);
+  }
 }
 
-.animate-fadeInRight {
-  animation: fadeInRight 1s ease forwards;
+.shadowPulse {
+  animation: shadowPulse 2s infinite;
 }
 
-.animate-pulse {
-  animation: pulse 2s infinite;
-}
-
-.animate-rotate {
-  animation: rotate 2s linear infinite;
-}
-
-/* تأخير الرسوم المتحركة */
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
+/* تعطيل الحركة للمستخدمين الذين يفضلون تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
