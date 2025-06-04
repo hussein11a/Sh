@@ -1,4 +1,4 @@
-// services.js - عرض الخدمات في الصفحة
+// services.js - عرض الخدمات في الصفحة بشكل ديناميكي
 import { loadCmsData } from './cms.js';
 
 /**
@@ -7,14 +7,15 @@ import { loadCmsData } from './cms.js';
  */
 export async function renderServices() {
   try {
-    // جلب بيانات الخدمات
+    // جلب بيانات الخدمات من ملفات المحتوى
     const services = await loadCmsData('services');
     
-    // التحقق من وجود قائمة الخدمات
+    // التحقق من وجود قسم الخدمات
     const servicesList = document.getElementById('services-list');
     
     if (!servicesList) {
-      throw new Error('لم يتم العثور على عنصر قائمة الخدمات (services-list)');
+      console.warn('لم يتم العثور على عنصر قائمة الخدمات (services-list)');
+      return;
     }
     
     if (!services || !Array.isArray(services) || services.length === 0) {
@@ -26,23 +27,32 @@ export async function renderServices() {
     // مسح المحتوى الحالي
     servicesList.innerHTML = '';
     
-    // إضافة الخدمات
-    services.forEach(service => {
+    // ترتيب الخدمات حسب الترتيب إذا كان متوفراً
+    const sortedServices = [...services].sort((a, b) => {
+      return (a.order || 999) - (b.order || 999);
+    });
+    
+    // إنشاء بطاقات الخدمات
+    sortedServices.forEach(service => {
       // التحقق من صحة بيانات الخدمة
-      if (!service.title || !service.description || !service.image) {
-        console.warn('بيانات خدمة غير مكتملة:', service);
-        return; // تخطي هذه الخدمة
+      if (!service.title || !service.description) {
+        console.warn('بيانات الخدمة غير مكتملة:', service);
+        return;
       }
       
-      // إنشاء بطاقة الخدمة بطريقة آمنة (تجنب استخدام innerHTML)
+      // إنشاء بطاقة الخدمة
       const card = document.createElement('div');
-      card.className = 'service-card';
+      card.className = 'service-card animate-fadeInUp';
       
-      // إضافة الصورة
+      // إضافة الصورة مع معالجة الأخطاء
       const img = document.createElement('img');
-      img.src = service.image;
+      img.src = service.image || './assets/images/default-service.jpg';
       img.alt = service.title;
-      img.loading = 'lazy'; // تحميل كسول للصور
+      img.loading = 'lazy'; // تحسين الأداء
+      img.onerror = function() {
+        this.src = './assets/images/default-service.jpg';
+        console.warn(`تعذر تحميل صورة الخدمة: ${service.title}`);
+      };
       card.appendChild(img);
       
       // إضافة العنوان
@@ -59,14 +69,14 @@ export async function renderServices() {
       const button = document.createElement('a');
       button.href = '#contact';
       button.className = 'service-btn';
-      button.textContent = 'اطلب الخدمة الآن';
+      button.textContent = service.button_text || 'اطلب الخدمة الآن';
       card.appendChild(button);
       
       // إضافة البطاقة إلى القائمة
       servicesList.appendChild(card);
     });
     
-    console.log('تم تحميل الخدمات بنجاح');
+    console.log(`تم تحميل ${sortedServices.length} خدمات بنجاح`);
   } catch (error) {
     console.error('خطأ في عرض الخدمات:', error.message);
     
