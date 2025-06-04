@@ -1,6 +1,6 @@
-/* responsive.css - تجاوب الموقع مع مختلف أحجام الشاشات */
+/* responsive.css - أنماط التجاوب مع مختلف أحجام الشاشات */
 
-/* تجاوب الشاشات الكبيرة */
+/* الأجهزة الكبيرة (أكبر من 1200px) */
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
@@ -9,13 +9,9 @@
   .hero-title {
     font-size: 3.5rem;
   }
-  
-  .hero-subtitle {
-    font-size: 1.3rem;
-  }
 }
 
-/* تجاوب الشاشات المتوسطة */
+/* الأجهزة المتوسطة (بين 992px و 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
   .container {
     max-width: 960px;
@@ -24,17 +20,9 @@
   .hero-title {
     font-size: 3rem;
   }
-  
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
-/* تجاوب الأجهزة اللوحية */
+/* الأجهزة الصغيرة (بين 768px و 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .container {
     max-width: 720px;
@@ -44,139 +32,74 @@
     font-size: 2.5rem;
   }
   
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .services-grid {
+  .services-list {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .footer-grid {
+  .features-list {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  h1 {
-    font-size: 2.2rem;
-  }
-  
-  h2 {
-    font-size: 1.8rem;
-  }
-  
-  h3 {
-    font-size: 1.3rem;
   }
 }
 
-/* تجاوب الهواتف */
+/* الأجهزة الصغيرة جداً (أقل من 768px) */
 @media (max-width: 767px) {
   .container {
-    max-width: 540px;
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
   }
   
-  .site-header {
-    padding: 15px 0;
-  }
-  
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .logo-container {
-    margin-bottom: 10px;
-  }
-  
-  .header-content {
-    margin-bottom: 15px;
-  }
-  
-  .site-title {
-    font-size: 1.8rem;
-  }
-  
-  .site-description {
-    font-size: 0.9rem;
+  .hero-section {
+    height: 70vh;
   }
   
   .hero-title {
     font-size: 2rem;
   }
   
-  .hero-subtitle {
+  .hero-description {
     font-size: 1rem;
+  }
+  
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-contact p {
+    justify-content: center;
+  }
+}
+
+/* الأجهزة الصغيرة جداً (أقل من 576px) */
+@media (max-width: 575px) {
+  .header-buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
   }
   
   .hero-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: var(--spacing-sm);
   }
   
-  .services-grid {
-    grid-template-columns: 1fr;
+  .contact-buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
   }
   
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.6rem;
-  }
-  
-  h3 {
-    font-size: 1.3rem;
-  }
-}
-
-/* تجاوب الهواتف الصغيرة */
-@media (max-width: 575px) {
-  .container {
-    width: 100%;
-    padding: 0 15px;
-  }
-  
-  .hero-title {
-    font-size: 1.8rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .section-title h2 {
-    font-size: 1.8rem;
-  }
-  
-  .service-title {
-    font-size: 1.2rem;
-  }
-}
-
-/* تجاوب الأجهزة اللوحية في الوضع الأفقي */
-@media (min-width: 992px) and (max-width: 1200px) and (orientation: landscape) {
-  .hero-section {
-    min-height: 70vh;
-  }
-}
-
-/* تجاوب الهواتف في الوضع الأفقي */
-@media (max-width: 991px) and (orientation: landscape) {
-  .hero-section {
-    min-height: auto;
-    padding: 50px 0;
-  }
-}
-
-/* دعم الشاشات عالية الدقة (Retina) */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .hero-image img,
-  .service-image img {
-    image-rendering: -webkit-optimize-contrast;
+  .section-title {
+    font-size: 1.5rem;
   }
 }
