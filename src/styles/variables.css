@@ -3,29 +3,31 @@
 :root {
   /* الألوان الأساسية */
   --primary-color: #0056b3;
-  --primary-dark: #004494;
   --primary-light: #3a7abd;
-  --secondary-color: #25d366;
-  --secondary-dark: #1da851;
-  --secondary-light: #4cda7f;
-  
-  /* ألوان النص */
-  --dark-text: #333333;
-  --light-text: #ffffff;
-  --muted-text: #6c757d;
+  --primary-dark: #003d7a;
+  --secondary-color: #28a745;
+  --accent-color: #ffc107;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
   
   /* ألوان الخلفية */
   --white-bg: #ffffff;
   --light-bg: #f8f9fa;
   --dark-bg: #343a40;
-  --overlay-bg: rgba(0, 0, 0, 0.6);
+  
+  /* ألوان النصوص */
+  --dark-text: #212529;
+  --light-text: #ffffff;
+  --muted-text: #6c757d;
   
   /* الخطوط */
-  --primary-font: 'Cairo', sans-serif;
-  --secondary-font: 'Tajawal', sans-serif;
+  --primary-font: 'Tajawal', sans-serif;
+  --secondary-font: 'Cairo', sans-serif;
   --base-font-size: 16px;
-  --heading-line-height: 1.4;
   --body-line-height: 1.6;
+  --heading-line-height: 1.3;
   
   /* المسافات */
   --spacing-xs: 0.25rem;
@@ -35,28 +37,22 @@
   --spacing-xl: 2rem;
   --spacing-xxl: 3rem;
   
-  /* الحدود والظلال */
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  /* الحدود */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-width: 1px;
+  
+  /* الظلال */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
   
   /* التحولات */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s ease;
+  --transition-slow: 0.8s ease;
   
-  /* تخطيط الصفحة */
-  --container-max-width: 1200px;
-  --header-height: 80px;
-  --footer-height: 200px;
-}
-
-/* وسائط الاستعلام للأجهزة المختلفة */
-@media (max-width: 768px) {
-  :root {
-    --base-font-size: 14px;
-    --header-height: 60px;
-  }
+  /* الحاويات */
+  --container-width: 1140px;
 }
