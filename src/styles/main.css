@@ -1,75 +1,134 @@
-/* main.css - الملف الرئيسي للأنماط */
+/* main.css - الأنماط الرئيسية والتجاوزات النهائية */
 
 /* استيراد الخطوط */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap');
 
-/* تنسيقات إضافية */
-.page-wrapper {
-  position: relative;
+/* تجاوزات عامة */
+body {
+  font-family: 'Tajawal', sans-serif;
+  overflow-x: hidden;
 }
 
-/* تنسيق قسم الاتصال */
-.contact-section {
-  background-color: var(--light-bg);
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif;
 }
 
-.contact-info h3 {
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
+/* تحسينات الأداء */
+img {
+  content-visibility: auto;
 }
 
-/* تنسيق قسم لماذا نحن */
-.why-us-section {
-  background-color: var(--white-bg);
+/* تحسينات إمكانية الوصول */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
-/* تنسيقات إضافية للصور */
-.service-card img {
-  transition: transform var(--transition-normal);
-}
-
-.service-card:hover img {
-  transform: scale(1.05);
-}
-
-/* تنسيقات إضافية للأزرار */
-.service-btn {
-  font-weight: 600;
-}
-
-/* تنسيقات إضافية للفوتر */
-.footer-logo h3 {
-  color: var(--light-text);
-}
-
-/* تنسيقات للطباعة */
+/* تحسينات الطباعة */
 @media print {
+  .site-header,
+  .site-footer,
   .floating-buttons,
-  .scroll-to-top,
-  .header-buttons {
+  .scroll-to-top {
     display: none !important;
   }
   
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* تجاوزات محددة */
+.hero-section {
+  position: relative;
+  background-color: #f8f9fa; /* لون احتياطي في حالة عدم تحميل الصورة */
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+}
+
+/* تحسينات الأمان */
+img[src=""], 
+img:not([src]) {
+  opacity: 0;
+}
+
+/* تحسينات الأداء للصور */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* تحسينات تجربة المستخدم */
+::selection {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* تحسينات الوضع المظلم (إذا تم تفعيله من قبل المستخدم) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white-bg: #121212;
+    --light-bg: #1e1e1e;
+    --dark-text: #e0e0e0;
+    --muted-text: #a0a0a0;
+  }
+  
   .site-header {
-    position: static;
-    box-shadow: none;
+    background-color: #1a1a1a;
+  }
+  
+  .service-card,
+  .feature-card,
+  .contact-info-item {
+    background-color: #1a1a1a;
+  }
+}
+
+/* تحسينات للأجهزة المحمولة */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 70px;
+  }
+}
+
+/* تحسينات للشاشات الكبيرة */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
   }
   
   .hero-section {
-    height: auto;
-    min-height: auto;
-  }
-  
-  .hero-content {
-    color: var(--dark-text);
-  }
-  
-  .hero-title {
-    color: var(--dark-text);
-  }
-  
-  .overlay {
-    display: none;
+    min-height: 600px;
   }
 }
