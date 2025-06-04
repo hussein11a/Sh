@@ -1,55 +1,27 @@
-/* responsive.css - أنماط التجاوب مع مختلف أحجام الشاشات */
+/* responsive.css - أنماط الاستجابة للأجهزة المختلفة */
 
 /* الأجهزة الكبيرة (أكبر من 1200px) */
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   .container {
     max-width: 1140px;
   }
-  
-  .hero-title {
-    font-size: 3.5rem;
-  }
 }
 
-/* الأجهزة المتوسطة (بين 992px و 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
+/* الأجهزة المتوسطة (992px - 1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
   .container {
     max-width: 960px;
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
 }
 
-/* الأجهزة الصغيرة (بين 768px و 991px) */
+/* الأجهزة الصغيرة (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .container {
     max-width: 720px;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .services-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .features-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* الأجهزة الصغيرة جداً (أقل من 768px) */
-@media (max-width: 767px) {
-  .container {
-    max-width: 100%;
-    padding: 0 var(--spacing-md);
-  }
-  
-  .hero-section {
-    height: 70vh;
   }
   
   .hero-title {
@@ -57,49 +29,126 @@
   }
   
   .hero-description {
+    font-size: 1.1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* الأجهزة المحمولة (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo-container {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .header-buttons {
+    justify-content: center;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-description {
     font-size: 1rem;
   }
   
-  .services-list {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .services-grid {
     grid-template-columns: 1fr;
   }
   
-  .features-list {
+  .features-grid {
     grid-template-columns: 1fr;
   }
   
-  .contact-details {
+  .contact-card {
     grid-template-columns: 1fr;
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
   }
   
   .footer-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
-  .footer-contact p {
-    justify-content: center;
-  }
 }
 
-/* الأجهزة الصغيرة جداً (أقل من 576px) */
+/* الأجهزة المحمولة الصغيرة (أقل من 576px) */
 @media (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo-container {
+    margin-bottom: var(--spacing-md);
+  }
+  
   .header-buttons {
     flex-direction: column;
     gap: var(--spacing-sm);
   }
   
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  
   .hero-buttons {
     flex-direction: column;
-    gap: var(--spacing-sm);
+    align-items: center;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-card {
+    grid-template-columns: 1fr;
   }
   
   .contact-buttons {
     flex-direction: column;
-    gap: var(--spacing-sm);
+    align-items: center;
   }
   
-  .section-title {
-    font-size: 1.5rem;
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 }
