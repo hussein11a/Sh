@@ -1,6 +1,7 @@
 /* layout.css - أنماط تخطيط الصفحة */
 
-.page-wrapper {
+/* تخطيط الصفحة الرئيسي */
+.wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,20 +30,9 @@ main {
   margin-left: var(--spacing-md);
 }
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .site-info {
   display: flex;
   flex-direction: column;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
 }
 
 .header-buttons {
@@ -50,58 +40,47 @@ main {
   gap: var(--spacing-md);
 }
 
-/* تخطيط القسم الرئيسي */
+/* تخطيط قسم البطل */
 .hero-section {
   position: relative;
-  height: 80vh;
   min-height: 500px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  background-image: url('../assets/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--light-text);
 }
 
-.hero-background {
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-}
-
-.hero-background img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--overlay-bg);
-  z-index: -1;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 }
 
 .hero-content {
-  color: var(--light-text);
-  text-align: center;
+  position: relative;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--spacing-xl);
+  text-align: center;
+  padding: var(--spacing-xxl) 0;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: var(--spacing-lg);
   color: var(--light-text);
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-xl);
+  color: var(--light-text);
 }
 
 .hero-buttons {
@@ -110,8 +89,8 @@ main {
   gap: var(--spacing-md);
 }
 
-/* تخطيط قسم لماذا نحن */
-.features-list {
+/* تخطيط قسم الميزات */
+.features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--spacing-lg);
@@ -122,13 +101,14 @@ main {
   background-color: var(--white-bg);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--shadow-md);
   text-align: center;
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
 .feature-icon {
@@ -138,29 +118,36 @@ main {
 }
 
 .feature-title {
-  color: var(--primary-color);
   margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
 }
 
 /* تخطيط قسم الاتصال */
+.contact-section {
+  background-color: var(--light-bg);
+}
+
 .contact-info {
   margin-bottom: var(--spacing-xl);
 }
 
-.contact-details {
+.contact-card {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 
-.contact-item {
+.contact-info-item {
   display: flex;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
+  align-items: flex-start;
+  background-color: var(--white-bg);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-.contact-item i {
+.contact-info-item i {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-left: var(--spacing-md);
@@ -169,7 +156,7 @@ main {
 .contact-buttons {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   margin-top: var(--spacing-xl);
 }
 
@@ -200,42 +187,74 @@ main {
   margin-bottom: var(--spacing-md);
 }
 
-.footer-contact h4,
-.footer-links h4 {
-  color: var(--light-text);
-  margin-bottom: var(--spacing-md);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: var(--spacing-sm);
-}
-
-.footer-contact p {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--spacing-sm);
-}
-
-.footer-contact i {
-  margin-left: var(--spacing-sm);
-}
-
-.footer-links ul li {
-  margin-bottom: var(--spacing-sm);
-}
-
-.footer-links a {
-  color: var(--light-text);
-  opacity: 0.8;
-  transition: opacity var(--transition-fast);
-}
-
-.footer-links a:hover {
-  opacity: 1;
-}
-
 .footer-bottom {
   text-align: center;
   padding-top: var(--spacing-lg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* أزرار الاتصال العائمة */
+.floating-buttons {
+  position: fixed;
+  left: var(--spacing-md);
+  bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  z-index: 100;
+}
+
+.floating-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-text);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast);
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+}
+
+.call-btn {
+  background-color: var(--primary-color);
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+}
+
+/* زر التمرير للأعلى */
+.scroll-to-top {
+  position: fixed;
+  right: var(--spacing-md);
+  bottom: var(--spacing-md);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast);
+  z-index: 100;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
 }
 
 /* تعديلات للأجهزة المحمولة */
