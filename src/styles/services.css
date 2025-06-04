@@ -1,130 +1,86 @@
-/* services.css - تنسيق قسم الخدمات */
+/* services.css - أنماط قسم الخدمات */
 
 .services-section {
   background-color: var(--light-bg);
-  padding: var(--section-padding);
+  padding: var(--spacing-xxl) 0;
 }
 
-.services-grid {
+.services-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 
 .service-card {
   background-color: var(--white-bg);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--order, 0) * 0.1s);
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-lg);
 }
 
-.service-image {
-  height: 200px;
-  overflow: hidden;
-}
-
-.service-image img {
+.service-card img {
   width: 100%;
-  height: 100%;
+  height: 200px;
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.service-card:hover .service-image img {
-  transform: scale(1.1);
-}
-
-.service-content {
-  padding: 25px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-title {
-  font-size: 1.3rem;
+.service-card h3 {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-xs);
   color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: 1.25rem;
 }
 
-.service-description {
+.service-card p {
+  padding: 0 var(--spacing-md);
   color: var(--dark-text);
-  margin-bottom: 20px;
-  line-height: 1.6;
   flex-grow: 1;
+  margin-bottom: var(--spacing-lg);
 }
 
-.service-cta {
+.service-btn {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--secondary-color);
-  color: var(--light-text);
-  border-radius: 30px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-align: center;
-  margin-top: auto;
-}
-
-.service-cta:hover {
-  background-color: var(--primary-color);
-  transform: translateY(-3px);
-}
-
-.services-cta {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.services-cta-text {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.services-cta-button {
-  display: inline-block;
-  padding: 15px 30px;
   background-color: var(--primary-color);
   color: var(--light-text);
-  border-radius: 30px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  margin: 0 var(--spacing-md) var(--spacing-md);
+  transition: background-color var(--transition-fast);
 }
 
-.services-cta-button:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
+.service-btn:hover {
+  background-color: var(--primary-dark);
+  color: var(--light-text);
 }
 
-/* تجاوب قسم الخدمات */
-@media (max-width: 991px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 767px) {
-  .services-grid {
+/* تعديلات للأجهزة المحمولة */
+@media (max-width: 768px) {
+  .services-list {
     grid-template-columns: 1fr;
   }
   
-  .services-title {
-    font-size: 2rem;
-  }
-  
-  .service-title {
-    font-size: 1.3rem;
+  .service-card img {
+    height: 180px;
   }
 }
