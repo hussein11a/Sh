@@ -1,4 +1,4 @@
-// loadContact.js - تحميل وعرض معلومات الاتصال
+// loadContact.js - تحميل وعرض معلومات الاتصال بشكل ديناميكي
 import { loadCmsData } from './cms.js';
 
 /**
@@ -7,14 +7,15 @@ import { loadCmsData } from './cms.js';
  */
 export async function renderContactInfo() {
   try {
-    // جلب بيانات الاتصال
+    // جلب بيانات الاتصال من ملفات المحتوى
     const contactInfo = await loadCmsData('contact');
     
     // التحقق من وجود قسم معلومات الاتصال
     const contactSection = document.getElementById('contact-info');
     
     if (!contactSection) {
-      throw new Error('لم يتم العثور على عنصر معلومات الاتصال (contact-info)');
+      console.warn('لم يتم العثور على عنصر معلومات الاتصال (contact-info)');
+      return;
     }
     
     if (!contactInfo) {
@@ -24,46 +25,51 @@ export async function renderContactInfo() {
     }
     
     // التحقق من صحة بيانات الاتصال
-    if (!contactInfo.title || !contactInfo.phone || !contactInfo.whatsapp) {
+    if (!contactInfo.phone || !contactInfo.whatsapp) {
       console.warn('بيانات الاتصال غير مكتملة:', contactInfo);
       contactSection.innerHTML = '<p class="error-message">معلومات الاتصال غير مكتملة</p>';
       return;
     }
     
-    // إنشاء عناصر معلومات الاتصال بطريقة آمنة (تجنب استخدام innerHTML)
-    const title = document.createElement('h3');
-    title.textContent = contactInfo.title;
+    // إنشاء عناصر معلومات الاتصال بطريقة آمنة
+    const contactHTML = `
+      <div class="contact-card">
+        <div class="contact-info-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>رقم الهاتف</h4>
+            <p><a href="tel:${contactInfo.phone}" dir="ltr">${contactInfo.phone}</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <h4>واتساب</h4>
+            <p><a href="https://wa.me/${contactInfo.whatsapp.replace(/\+/g, '')}" target="_blank" rel="noopener noreferrer" dir="ltr">${contactInfo.whatsapp}</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>العنوان</h4>
+            <p>${contactInfo.address || 'الرياض، المملكة العربية السعودية'}</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>ساعات العمل</h4>
+            <p>${contactInfo.working_hours || '24 ساعة طوال أيام الأسبوع'}</p>
+          </div>
+        </div>
+      </div>
+    `;
     
-    const contactDetails = document.createElement('div');
-    contactDetails.className = 'contact-details';
+    // إضافة المحتوى إلى القسم
+    contactSection.innerHTML = contactHTML;
     
-    // إضافة رقم الهاتف
-    const phoneItem = createContactItem('fas fa-phone', contactInfo.phone);
-    contactDetails.appendChild(phoneItem);
-    
-    // إضافة رقم الواتساب
-    const whatsappItem = createContactItem('fab fa-whatsapp', contactInfo.whatsapp);
-    contactDetails.appendChild(whatsappItem);
-    
-    // إضافة العنوان إذا كان متوفراً
-    if (contactInfo.address) {
-      const addressItem = createContactItem('fas fa-map-marker-alt', contactInfo.address);
-      contactDetails.appendChild(addressItem);
-    }
-    
-    // إضافة ساعات العمل إذا كانت متوفرة
-    if (contactInfo.working_hours) {
-      const hoursItem = createContactItem('fas fa-clock', contactInfo.working_hours);
-      contactDetails.appendChild(hoursItem);
-    }
-    
-    // مسح المحتوى الحالي وإضافة العناصر الجديدة
-    contactSection.innerHTML = '';
-    contactSection.appendChild(title);
-    contactSection.appendChild(contactDetails);
-    
-    // تحديث روابط الاتصال في الصفحة
-    updateContactLinks(contactInfo);
+    // تحديث أزرار الاتصال في جميع أنحاء الصفحة
+    updateContactButtons(contactInfo);
     
     console.log('تم تحميل معلومات الاتصال بنجاح');
   } catch (error) {
@@ -78,44 +84,39 @@ export async function renderContactInfo() {
 }
 
 /**
- * دالة مساعدة لإنشاء عنصر معلومات اتصال
- * @param {string} iconClass - صنف أيقونة Font Awesome
- * @param {string} text - النص المراد عرضه
- * @returns {HTMLElement} - عنصر معلومات الاتصال
- */
-function createContactItem(iconClass, text) {
-  const item = document.createElement('div');
-  item.className = 'contact-item';
-  
-  const icon = document.createElement('i');
-  icon.className = iconClass;
-  
-  const paragraph = document.createElement('p');
-  paragraph.textContent = text;
-  
-  item.appendChild(icon);
-  item.appendChild(paragraph);
-  
-  return item;
-}
-
-/**
- * تحديث روابط الاتصال في الصفحة
+ * تحديث أزرار الاتصال في جميع أنحاء الصفحة
  * @param {Object} contactInfo - معلومات الاتصال
  */
-function updateContactLinks(contactInfo) {
-  // تحديث روابط الهاتف
-  const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-  phoneLinks.forEach(link => {
-    link.href = `tel:${contactInfo.phone}`;
-  });
-  
-  // تحديث روابط الواتساب
-  const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
-  const whatsappNumber = contactInfo.whatsapp.replace('+', '');
-  whatsappLinks.forEach(link => {
-    link.href = `https://wa.me/${whatsappNumber}`;
-  });
+function updateContactButtons(contactInfo) {
+  try {
+    if (!contactInfo) return;
+    
+    // تحديث روابط الهاتف
+    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+    phoneLinks.forEach(link => {
+      link.href = `tel:${contactInfo.phone}`;
+      
+      // تحديث النص إذا كان الزر يحتوي على نص فقط (بدون أيقونات)
+      if (link.childElementCount === 0) {
+        link.textContent = contactInfo.call_button_text || 'اتصل الآن';
+      }
+    });
+    
+    // تحديث روابط الواتساب
+    const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
+    whatsappLinks.forEach(link => {
+      link.href = `https://wa.me/${contactInfo.whatsapp.replace(/\+/g, '')}`;
+      
+      // تحديث النص إذا كان الزر يحتوي على نص فقط (بدون أيقونات)
+      if (link.childElementCount === 0) {
+        link.textContent = contactInfo.whatsapp_button_text || 'تواصل عبر الواتساب';
+      }
+    });
+    
+    console.log('تم تحديث أزرار الاتصال بنجاح');
+  } catch (error) {
+    console.error('خطأ في تحديث أزرار الاتصال:', error.message);
+  }
 }
 
 // استدعاء دالة عرض معلومات الاتصال بعد تحميل الصفحة
