@@ -2,56 +2,47 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "src/assets/images"
-public_folder: "/assets/images"
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+locale: "ar"
 
 collections:
-  - name: "site_info"
-    label: "معلومات الموقع"
-    folder: "src/content/site_info"
+  - name: "home"
+    label: "الصفحة الرئيسية"
+    folder: "content"
     create: false
     slug: "{{slug}}"
-    editor:
-      preview: false
     fields:
-      - { label: "اسم الموقع", name: "site_name", widget: "string" }
-      - { label: "وصف الموقع", name: "site_description", widget: "string" }
-      - { label: "رقم الهاتف", name: "phone", widget: "string" }
-      - { label: "رقم الواتساب", name: "whatsapp", widget: "string" }
-      - { label: "الشعار", name: "logo", widget: "image" }
-      - { label: "صورة الخلفية", name: "background_image", widget: "image" }
-      - { label: "نص زر الاتصال", name: "call_button_text", widget: "string", default: "اتصل الآن" }
-      - { label: "نص زر الواتساب", name: "whatsapp_button_text", widget: "string", default: "تواصل عبر الواتساب" }
-      - { label: "العنوان", name: "address", widget: "string", default: "الرياض، المملكة العربية السعودية" }
-      - { label: "ساعات العمل", name: "working_hours", widget: "string", default: "24 ساعة طوال أيام الأسبوع" }
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "المحتوى"
+        name: "body"
+        widget: "markdown"
 
   - name: "services"
     label: "الخدمات"
-    folder: "src/content/services"
+    folder: "content/services"
     create: true
     slug: "{{slug}}"
-    editor:
-      preview: false
     fields:
-      - { label: "المعرف", name: "id", widget: "string" }
-      - { label: "العنوان", name: "title", widget: "string" }
-      - { label: "الوصف", name: "description", widget: "text" }
-      - { label: "الصورة", name: "image", widget: "image" }
-      - { label: "الترتيب", name: "order", widget: "number", default: 1 }
-      - { label: "نص الزر", name: "button_text", widget: "string", default: "اطلب الخدمة الآن" }
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "الوصف"
+        name: "body"
+        widget: "markdown"
 
   - name: "contact"
-    label: "معلومات الاتصال"
-    folder: "src/content/contact"
-    create: false
+    label: "اتصل بنا"
+    folder: "content/contact"
+    create: true
     slug: "{{slug}}"
-    editor:
-      preview: false
     fields:
-      - { label: "العنوان", name: "title", widget: "string", default: "اتصل بنا" }
-      - { label: "رقم الهاتف", name: "phone", widget: "string" }
-      - { label: "رقم الواتساب", name: "whatsapp", widget: "string" }
-      - { label: "العنوان", name: "address", widget: "string", default: "الرياض، المملكة العربية السعودية" }
-      - { label: "ساعات العمل", name: "working_hours", widget: "string", default: "24 ساعة طوال أيام الأسبوع" }
-      - { label: "نص زر الاتصال", name: "call_button_text", widget: "string", default: "اتصل الآن" }
-      - { label: "نص زر الواتساب", name: "whatsapp_button_text", widget: "string", default: "تواصل عبر الواتساب" }
+      - label: "العنوان"
+        name: "title"
+        widget: "string"
+      - label: "الوصف"
+        name: "body"
+        widget: "markdown"
