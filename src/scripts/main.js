@@ -1,8 +1,15 @@
 // main.js - الملف الرئيسي لاستيراد جميع الملفات الأخرى
+import { loadCmsData } from './cms.js';
+import { renderServices } from './services.js';
+import { renderContactInfo } from './loadContact.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+/**
+ * تنفيذ الوظائف الرئيسية بعد تحميل الصفحة
+ */
+document.addEventListener('DOMContentLoaded', async function() {
+  try {
     // تحميل معلومات الموقع
-    loadSiteInfo();
+    await loadSiteInfo();
     
     // تفعيل تأثيرات التمرير
     initScrollAnimations();
@@ -14,85 +21,168 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCopyrightYear();
     
     console.log('تم تحميل الموقع بنجاح');
+  } catch (error) {
+    console.error('خطأ في تحميل الموقع:', error.message);
+  }
 });
 
-// دالة تحميل معلومات الموقع
+/**
+ * دالة تحميل معلومات الموقع
+ */
 async function loadSiteInfo() {
-    try {
-        // تحميل معلومات الموقع من Netlify CMS
-        const siteInfo = await loadCmsData('site_info');
-        
-        if (siteInfo) {
-            // تحديث عناصر معلومات الموقع
-            updateSiteElements(siteInfo);
-        }
-    } catch (error) {
-        console.error('خطأ في تحميل معلومات الموقع:', error);
+  try {
+    // تحميل معلومات الموقع من Netlify CMS
+    const siteInfo = await loadCmsData('site_info');
+    
+    if (siteInfo) {
+      // تحديث عناصر معلومات الموقع
+      updateSiteElements(siteInfo);
+    } else {
+      console.warn('لم يتم العثور على معلومات الموقع');
     }
+  } catch (error) {
+    console.error('خطأ في تحميل معلومات الموقع:', error.message);
+    throw error;
+  }
 }
 
-// دالة تحديث عناصر الموقع
+/**
+ * دالة تحديث عناصر الموقع
+ * @param {Object} siteInfo - معلومات الموقع
+ */
 function updateSiteElements(siteInfo) {
-    // تحديث عناصر معلومات الموقع
-    
+  try {
     // تحديث العنوان والوصف
-    const siteTitle = document.getElementById('site-title');
-    const siteSubtitle = document.getElementById('site-subtitle');
-    
-    if (siteTitle) siteTitle.textContent = siteInfo.site_name;
-    if (siteSubtitle) siteSubtitle.textContent = siteInfo.site_description;
+    updateElementText('site-title', siteInfo.site_name);
+    updateElementText('site-subtitle', siteInfo.site_description);
     
     // تحديث أرقام الهاتف والواتساب
-    const phoneLink = document.getElementById('phone-link');
-    const whatsappLink = document.getElementById('whatsapp-link');
-    const callButtonText = document.getElementById('call-button-text');
-    const whatsappButtonText = document.getElementById('whatsapp-button-text');
+    updateElementHref('phone-link', `tel:${siteInfo.phone}`);
+    updateElementHref('whatsapp-link', `https://wa.me/${siteInfo.whatsapp.replace('+', '')}`);
     
-    if (phoneLink) phoneLink.href = `tel:${siteInfo.phone}`;
-    if (whatsappLink) whatsappLink.href = `https://wa.me/${siteInfo.whatsapp.replace('+', '')}`;
-    if (callButtonText) callButtonText.textContent = siteInfo.call_button_text;
-    if (whatsappButtonText) whatsappButtonText.textContent = siteInfo.whatsapp_button_text;
+    // تحديث نصوص الأزرار
+    updateElementText('call-button-text', siteInfo.call_button_text);
+    updateElementText('whatsapp-button-text', siteInfo.whatsapp_button_text);
     
     // تحديث الأزرار العائمة
-    const callBtn = document.getElementById('call-btn');
-    const whatsappBtn = document.getElementById('whatsapp-btn');
-    
-    if (callBtn) callBtn.href = `tel:${siteInfo.phone}`;
-    if (whatsappBtn) whatsappBtn.href = `https://wa.me/${siteInfo.whatsapp.replace('+', '')}`;
+    updateElementHref('call-btn', `tel:${siteInfo.phone}`);
+    updateElementHref('whatsapp-btn', `https://wa.me/${siteInfo.whatsapp.replace('+', '')}`);
     
     // تحديث أزرار القسم الرئيسي
-    const heroCallButtonText = document.getElementById('hero-call-button-text');
-    const heroWhatsappButtonText = document.getElementById('hero-whatsapp-button-text');
-    
-    if (heroCallButtonText) heroCallButtonText.textContent = siteInfo.call_button_text;
-    if (heroWhatsappButtonText) heroWhatsappButtonText.textContent = siteInfo.whatsapp_button_text;
+    updateElementText('hero-call-button-text', siteInfo.call_button_text);
+    updateElementText('hero-whatsapp-button-text', siteInfo.whatsapp_button_text);
     
     // تحديث معلومات التذييل
-    const footerPhone = document.getElementById('footer-phone');
-    const footerWhatsapp = document.getElementById('footer-whatsapp');
-    
-    if (footerPhone) footerPhone.textContent = siteInfo.phone;
-    if (footerWhatsapp) footerWhatsapp.textContent = siteInfo.whatsapp;
+    updateElementText('footer-phone', siteInfo.phone);
+    updateElementText('footer-whatsapp', siteInfo.whatsapp);
     
     console.log('تم تحديث معلومات الموقع بنجاح');
+  } catch (error) {
+    console.error('خطأ في تحديث عناصر الموقع:', error.message);
+  }
 }
 
-// دالة تفعيل تأثيرات التمرير
+/**
+ * دالة مساعدة لتحديث نص عنصر
+ * @param {string} id - معرف العنصر
+ * @param {string} text - النص الجديد
+ */
+function updateElementText(id, text) {
+  const element = document.getElementById(id);
+  if (element && text) {
+    element.textContent = text;
+  }
+}
+
+/**
+ * دالة مساعدة لتحديث رابط عنصر
+ * @param {string} id - معرف العنصر
+ * @param {string} href - الرابط الجديد
+ */
+function updateElementHref(id, href) {
+  const element = document.getElementById(id);
+  if (element && href) {
+    element.href = href;
+  }
+}
+
+/**
+ * دالة تفعيل تأثيرات التمرير
+ */
 function initScrollAnimations() {
-    // يمكن إضافة تأثيرات التمرير هنا
+  try {
+    // تحديد العناصر التي ستتأثر بالتمرير
+    const animatedElements = document.querySelectorAll('.animate-fadeInUp, .feature-card, .service-card');
+    
+    // إنشاء مراقب التمرير
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // مراقبة العناصر
+    animatedElements.forEach(element => {
+      observer.observe(element);
+    });
+    
     console.log('تم تفعيل تأثيرات التمرير');
+  } catch (error) {
+    console.error('خطأ في تفعيل تأثيرات التمرير:', error.message);
+  }
 }
 
-// دالة تفعيل زر التمرير للأعلى
+/**
+ * دالة تفعيل زر التمرير للأعلى
+ */
 function initScrollToTopButton() {
-    // يمكن إضافة زر التمرير للأعلى هنا
+  try {
+    const scrollToTopButton = document.getElementById('scroll-to-top');
+    
+    if (!scrollToTopButton) {
+      console.warn('لم يتم العثور على زر التمرير للأعلى');
+      return;
+    }
+    
+    // إظهار أو إخفاء الزر حسب موضع التمرير
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopButton.classList.add('visible');
+      } else {
+        scrollToTopButton.classList.remove('visible');
+      }
+    });
+    
+    // التمرير للأعلى عند النقر على الزر
+    scrollToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
     console.log('تم تفعيل زر التمرير للأعلى');
+  } catch (error) {
+    console.error('خطأ في تفعيل زر التمرير للأعلى:', error.message);
+  }
 }
 
-// دالة تحديث السنة الحالية في حقوق النشر
+/**
+ * دالة تحديث السنة الحالية في حقوق النشر
+ */
 function updateCopyrightYear() {
+  try {
     const currentYearElement = document.getElementById('current-year');
+    
     if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
+      currentYearElement.textContent = new Date().getFullYear();
     }
+  } catch (error) {
+    console.error('خطأ في تحديث السنة الحالية:', error.message);
+  }
 }
+
+console.log('تم تحميل الملف الرئيسي بنجاح');
