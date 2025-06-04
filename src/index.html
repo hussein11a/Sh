@@ -8,16 +8,17 @@
     <title>سطحة هيدروليك | خدمة نقل ورفع السيارات على مدار الساعة</title>
     <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/layout.css" />
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/services.css" />
     <link rel="stylesheet" href="./styles/buttons.css" />
     <link rel="stylesheet" href="./styles/responsive.css" />
-    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/animations.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <!-- إضافة سكريبت Netlify Identity -->
+    <!-- إعداد Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -38,9 +39,9 @@
                         <div class="header-buttons">
                             <a href="tel:+966501234567" id="phone-link" class="btn btn-primary header-button">
                                 <i class="fas fa-phone-alt"></i>
-                                <span id="call-button-text">اتصل الآن!</span>
+                                <span id="call-button-text">اتصل الآن</span>
                             </a>
-                            <a href="https://wa.me/966501234567" id="whatsapp-link" target="_blank" class="btn btn-secondary header-button">
+                            <a href="https://wa.me/966501234567" id="whatsapp-link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary header-button">
                                 <i class="fab fa-whatsapp"></i>
                                 <span id="whatsapp-button-text">تواصل عبر الواتساب</span>
                             </a>
@@ -54,19 +55,19 @@
             <!-- قسم الصفحة الرئيسية -->
             <section id="hero" class="hero-section">
                 <div class="hero-background">
-                    <img src="./assets/images/hero-bg.jpg" alt="سطحة هيدروليك" />
+                    <img src="./assets/images/hero-bg.jpg" alt="سطحة هيدروليك" loading="lazy" />
                 </div>
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="hero-content">
                         <h2 class="hero-title animate-fadeInUp">خدمة نقل السيارات على مدار الساعة</h2>
-                        <p class="hero-subtitle animate-fadeInUp">نقدم خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان في الرياض وجميع المناطق المجاورة</p>
+                        <p class="hero-description animate-fadeInUp">نقدم خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان في الرياض وجميع المناطق المجاورة</p>
                         <div class="hero-buttons animate-fadeInUp">
                             <a href="tel:+966501234567" class="btn btn-primary">
                                 <i class="fas fa-phone-alt"></i>
                                 <span id="hero-call-button-text">اتصل الآن</span>
                             </a>
-                            <a href="https://wa.me/966501234567" target="_blank" class="btn btn-secondary">
+                            <a href="https://wa.me/966501234567" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                                 <i class="fab fa-whatsapp"></i>
                                 <span id="hero-whatsapp-button-text">تواصل عبر الواتساب</span>
                             </a>
@@ -78,21 +79,74 @@
             <!-- قسم الخدمات -->
             <section id="services" class="services-section">
                 <div class="container">
-                    <h2 class="section-title">خدماتنا</h2>
-                    <p class="section-subtitle">نقدم مجموعة متكاملة من خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان</p>
-                    
-                    <!-- قائمة الخدمات - هنا سيتم إضافة بطاقات الخدمات ديناميكياً -->
-                    <div id="services-list" class="services-grid"></div>
+                    <div class="section-header">
+                        <h2 class="section-title">خدماتنا</h2>
+                        <p class="section-description">نقدم مجموعة متكاملة من خدمات نقل وسحب السيارات بأعلى معايير الجودة والأمان</p>
+                    </div>
+                    <!-- هنا سيتم إضافة الخدمات ديناميكياً -->
+                    <div id="services-list" class="services-list"></div>
+                </div>
+            </section>
+
+            <!-- قسم لماذا نحن -->
+            <section id="why-us" class="why-us-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">لماذا تختار سطحة هيدروليك؟</h2>
+                        <p class="section-description">نحن نقدم خدمة متميزة بأعلى معايير الجودة والاحترافية</p>
+                    </div>
+                    <div class="features-list">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="feature-title">خدمة على مدار الساعة</h3>
+                            <p class="feature-description">نعمل 24 ساعة طوال أيام الأسبوع لتلبية احتياجاتكم في أي وقت</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="feature-title">أمان وموثوقية</h3>
+                            <p class="feature-description">نستخدم أحدث التقنيات والمعدات لضمان سلامة سيارتك أثناء النقل</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h3 class="feature-title">سرعة الاستجابة</h3>
+                            <p class="feature-description">نصل إليك في أسرع وقت ممكن أينما كنت في الرياض والمناطق المجاورة</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3 class="feature-title">أسعار تنافسية</h3>
+                            <p class="feature-description">نقدم خدماتنا بأسعار مناسبة وعادلة مع الحفاظ على جودة الخدمة</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- قسم الاتصال -->
             <section id="contact" class="contact-section">
                 <div class="container">
-                    <h2 class="section-title">اتصل بنا</h2>
-                    
-                    <!-- معلومات الاتصال - هنا سيتم إضافة معلومات الاتصال ديناميكياً -->
+                    <div class="section-header">
+                        <h2 class="section-title">اتصل بنا</h2>
+                        <p class="section-description">نحن جاهزون لخدمتك على مدار الساعة، تواصل معنا الآن</p>
+                    </div>
+                    <!-- هنا سيتم إضافة معلومات الاتصال ديناميكياً -->
                     <div id="contact-info" class="contact-info"></div>
+                    <div class="contact-buttons">
+                        <a href="tel:+966501234567" id="contact-phone-link" class="btn btn-primary btn-large">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>اتصل الآن</span>
+                        </a>
+                        <a href="https://wa.me/966501234567" id="contact-whatsapp-link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>تواصل عبر الواتساب</span>
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -104,58 +158,48 @@
                         <img src="./assets/images/logo.png" alt="سطحة هيدروليك" />
                         <h3>سطحة هيدروليك</h3>
                     </div>
+                    <div class="footer-contact">
+                        <h4>معلومات الاتصال</h4>
+                        <p><i class="fas fa-phone-alt"></i> <span id="footer-phone">+966501234567</span></p>
+                        <p><i class="fab fa-whatsapp"></i> <span id="footer-whatsapp">+966501234567</span></p>
+                    </div>
                     <div class="footer-links">
                         <h4>روابط سريعة</h4>
                         <ul>
                             <li><a href="#hero">الرئيسية</a></li>
                             <li><a href="#services">خدماتنا</a></li>
+                            <li><a href="#why-us">لماذا نحن</a></li>
                             <li><a href="#contact">اتصل بنا</a></li>
                         </ul>
                     </div>
-                    <div class="footer-contact">
-                        <h4>تواصل معنا</h4>
-                        <p><i class="fas fa-phone"></i> <span id="footer-phone">+966501234567</span></p>
-                        <p><i class="fab fa-whatsapp"></i> <span id="footer-whatsapp">+966501234567</span></p>
-                    </div>
                 </div>
                 <div class="footer-bottom">
-                    <p class="footer-copyright">© <span id="current-year">2025</span> - سطحة هيدروليك. جميع الحقوق محفوظة</p>
+                    <p>جميع الحقوق محفوظة &copy; <span id="current-year">2025</span> سطحة هيدروليك</p>
                 </div>
             </div>
         </footer>
+
+        <!-- أزرار الاتصال العائمة -->
+        <div class="floating-buttons">
+            <a href="tel:+966501234567" id="call-btn" class="floating-btn call-btn">
+                <i class="fas fa-phone-alt"></i>
+            </a>
+            <a href="https://wa.me/966501234567" id="whatsapp-btn" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <!-- زر التمرير للأعلى -->
+        <button id="scroll-to-top" class="scroll-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
 
-    <!-- الأزرار العائمة -->
-    <div class="floating-buttons">
-        <a href="tel:+966501234567" id="call-btn" class="floating-call-btn">
-            <i class="fas fa-phone-alt"></i>
-        </a>
-        <a href="https://wa.me/966501234567" id="whatsapp-btn" target="_blank" class="floating-whatsapp-btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-
-    <!-- ملفات JavaScript -->
-    <script src="./scripts/cms.js"></script>
-    <script src="./scripts/services.js"></script>
-    <script src="./scripts/loadContact.js"></script>
-    <script src="./scripts/ui.js"></script>
-    <script src="./scripts/main.js"></script>
-
-    <!-- سكريبت Netlify Identity للمصادقة الرسمية -->
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-
-        // تحديث السنة الحالية في حقوق النشر
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <!-- سكريبتات JavaScript -->
+    <script type="module" src="./scripts/cms.js"></script>
+    <script type="module" src="./scripts/services.js"></script>
+    <script type="module" src="./scripts/loadContact.js"></script>
+    <script type="module" src="./scripts/ui.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
 </body>
 </html>
