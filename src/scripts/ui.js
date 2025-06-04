@@ -1,86 +1,68 @@
 // ui.js - ملف لتفعيل عناصر واجهة المستخدم
 
-// تفعيل القائمة المتنقلة
-function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
+/**
+ * تفعيل تأثيرات التمرير
+ */
+export function initScrollEffects() {
+  try {
+    // تحديد العناصر التي ستتأثر بالتمرير
+    const animatedElements = document.querySelectorAll('.animate-fadeInUp, .feature-card, .service-card');
     
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-    }
+    // إنشاء مراقب التمرير
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // مراقبة العناصر
+    animatedElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    console.log('تم تفعيل تأثيرات التمرير');
+  } catch (error) {
+    console.error('خطأ في تفعيل تأثيرات التمرير:', error.message);
+  }
 }
 
-// تفعيل التمرير السلس للروابط
-function initSmoothScroll() {
+/**
+ * تفعيل روابط التنقل السلس
+ */
+export function initSmoothScrolling() {
+  try {
+    // تحديد جميع الروابط التي تشير إلى عناصر داخل الصفحة
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// تفعيل زر التمرير للأعلى
-function initScrollToTopButton() {
-    const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.className = 'scroll-to-top-btn';
-    scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    document.body.appendChild(scrollToTopBtn);
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-    
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // تعديل للهيدر الثابت
             behavior: 'smooth'
-        });
+          });
+        }
+      });
     });
+    
+    console.log('تم تفعيل التنقل السلس');
+  } catch (error) {
+    console.error('خطأ في تفعيل التنقل السلس:', error.message);
+  }
 }
 
-// تفعيل تأثيرات التمرير
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.animate-fadeInUp');
-    
-    function checkIfInView() {
-        animatedElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('active');
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', checkIfInView);
-    checkIfInView();
-}
-
-// استدعاء الدوال بعد تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    initSmoothScroll();
-    initScrollToTopButton();
-    initScrollAnimations();
+// استدعاء الدوال عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollEffects();
+  initSmoothScrolling();
 });
+
+console.log('تم تحميل وحدة واجهة المستخدم بنجاح');
